@@ -28,7 +28,7 @@ export default function SideBar() {
         onClick={handleClick("#link1")}
         type="button"
       >
-        더 빠른 트렌드와 더 나은 서비스
+        Better Info & Service
       </button>
       <button
         className={cn(

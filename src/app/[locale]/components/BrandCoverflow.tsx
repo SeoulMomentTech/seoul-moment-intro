@@ -48,7 +48,7 @@ export default function BrandCoverflow({ className }: Props) {
             "max-xl:text-[40px] max-lg:text-center max-md:break-keep max-sm:text-[28px]",
           )}
         >
-          물음표를 넘어서면 브랜드가 시작되죠
+          Not a Place. A Feeling
         </h2>
       </div>
       <Swiper
