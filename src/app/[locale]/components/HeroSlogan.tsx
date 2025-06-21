@@ -3,47 +3,111 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import Image from "next/image";
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import Section from "@/components/ui/section";
+import useInterval from "@/hooks/useInterval";
 import { cn } from "@/utils/style";
 
 interface Props {
   className?: string;
 }
 
-const CONTENTS = {
-  word1: "MAKE",
-  word2: "YOUR",
-  word3: "SEOUL",
-  word4: "HERE",
-};
+interface Turn {
+  index: number;
+  name: string;
+}
+
+const turns = ["make", "your", "here", "seoul"];
+
+const CONTENTS = [
+  {
+    word: "MAKE",
+    activeKey: "make",
+    srcPosition: 1,
+    src: "https://res.cloudinary.com/dumqfde1s/image/upload/v1745226611/samples/dessert-on-a-plate.jpg",
+  },
+  {
+    word: "YOUR",
+    activeKey: "your",
+    srcPosition: 1,
+    src: "https://res.cloudinary.com/dumqfde1s/image/upload/v1745226610/samples/man-on-a-escalator.jpg",
+  },
+  {
+    word: "SEOUL",
+    activeKey: "seoul",
+    srcPosition: 4,
+    src: "https://res.cloudinary.com/dumqfde1s/image/upload/v1745226611/samples/dessert-on-a-plate.jpg",
+  },
+  {
+    word: "HERE",
+    activeKey: "here",
+    srcPosition: 1,
+    src: "https://res.cloudinary.com/dumqfde1s/image/upload/v1745226610/samples/chair-and-coffee-table.jpg",
+  },
+];
 
 const styleMap = {
   base: "overflow-hidden relative h-[150px] rounded-lg transition-all duration-700 max-xl:h-[80px] max-md:h-[45px] max-md:hidden ",
   word: "inline-block max-md:text-[50px] max-sm:text-[40px]",
-  // hover: "max-xl:hover:w-[160px] hover:w-[300px]",
 };
 
 export default function HeroSlogan({ className }: Props) {
-  const [active, setActive] = useState<string | null>(null);
+  const [currentTurn, setCurrentTurn] = useState<Turn | null>(null);
+  const [isPaused, setIsPaused] = useState(true);
 
   useGSAP(() => {
-    gsap.timeline().from(".section-one div", {
+    const tl = gsap.timeline();
+
+    tl.from(".section-one div", {
       duration: 1,
       opacity: 0,
       ease: "power4",
     });
-    gsap.from("span", {
+
+    tl.from("span", {
       duration: 1.5,
       yPercent: 100,
       opacity: 0,
       ease: "power4",
       stagger: 0.01,
     });
+
+    tl.call(() => {
+      setIsPaused(false);
+      setCurrentTurn({
+        index: 0,
+        name: "make",
+      });
+    });
+  });
+
+  useInterval({
+    duration: 1000,
+    callback: () => {
+      if (isPaused) return;
+
+      const nextTurn = ((currentTurn?.index ?? 4) + 1) % 4;
+
+      setCurrentTurn({
+        index: nextTurn,
+        name: turns[nextTurn],
+      });
+    },
+    pause: isPaused,
   });
 
   const handleMouseEnter = (name: string) => () => {
-    setActive(name);
+    const turn = turns.findIndex((turnName) => turnName === name);
+
+    setCurrentTurn({
+      index: turn,
+      name,
+    });
+    setIsPaused(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsPaused(false);
   };
 
   return (
@@ -61,101 +125,80 @@ export default function HeroSlogan({ className }: Props) {
         )}
       >
         <div className="flex overflow-hidden text-center">
-          {CONTENTS["word1"].split("").map((w, idx) => (
-            <div
-              className={cn("flex items-center")}
-              key={`word1-${w}-${idx + 1}`}
-              onMouseEnter={handleMouseEnter("make")}
-            >
-              <span className={styleMap.word} key={`word1-${w}-${idx + 1}`}>
-                {w}
-              </span>
-              <div
-                className={cn(
-                  "video-container",
-                  styleMap.base,
-                  "unvisible w-0 scale-0",
-                  idx === 1 &&
-                    active === "make" &&
-                    "visible mx-1 w-[150px] scale-100 opacity-100 hover:opacity-100 max-xl:w-[80px] max-xl:hover:w-[160px] max-md:w-[45px]",
-                )}
-              >
-                <Image
-                  alt=""
-                  fill
-                  priority
-                  src="https://res.cloudinary.com/dumqfde1s/image/upload/v1745226611/samples/dessert-on-a-plate.jpg"
-                />
-              </div>
-            </div>
-          ))}
-          <span className={cn("w-[42px]", "max-md:w-[20px]")} />
-          {CONTENTS["word2"].split("").map((w, idx) => (
-            <div
-              className={cn("flex items-center")}
-              key={`word2-${w}-${idx + 1}`}
-              onMouseEnter={handleMouseEnter("your")}
-            >
-              <span className={styleMap.word} key={`word2-${w}-${idx + 1}`}>
-                {w}
-              </span>
-              <div
-                className={cn(
-                  "video-container",
-                  styleMap.base,
-                  "unvisible w-0 scale-0",
-                  idx === 1 &&
-                    active === "your" &&
-                    "visible mx-1 w-[150px] scale-100 opacity-100 hover:opacity-100 max-xl:w-[80px] max-xl:hover:w-[160px] max-md:w-[45px]",
-                )}
-              >
-                <Image
-                  alt=""
-                  fill
-                  priority
-                  src="https://res.cloudinary.com/dumqfde1s/image/upload/v1745226610/samples/man-on-a-escalator.jpg"
-                />
-              </div>
-            </div>
-          ))}
+          {CONTENTS.slice(0, 2).map(
+            ({ word, srcPosition, activeKey, src }, idx) => {
+              return (
+                <Fragment key={activeKey}>
+                  {word.split("").map((w, idx) => (
+                    <div
+                      className={cn("flex items-center")}
+                      key={`${word}-${w}-${idx + 1}`}
+                      onMouseEnter={handleMouseEnter(activeKey)}
+                      onMouseLeave={handleMouseLeave}
+                    >
+                      <span
+                        className={styleMap.word}
+                        key={`word1-${w}-${idx + 1}`}
+                      >
+                        {w}
+                      </span>
+                      <div
+                        className={cn(
+                          "video-container",
+                          styleMap.base,
+                          "unvisible w-0 scale-0",
+                          idx === srcPosition &&
+                            currentTurn?.name === activeKey &&
+                            "visible mx-1 w-[150px] scale-100 opacity-100 hover:opacity-100 max-xl:w-[80px] max-md:w-[45px]",
+                        )}
+                      >
+                        <Image alt="" fill priority src={src} />
+                      </div>
+                    </div>
+                  ))}
+                  {idx === 0 && (
+                    <span className={cn("w-[42px]", "max-md:w-[20px]")} />
+                  )}
+                </Fragment>
+              );
+            },
+          )}
         </div>
         <div className="h-[12px]" />
         <div className="flex items-center overflow-hidden text-center">
-          {CONTENTS["word3"].split("").map((w, idx) => (
-            <div
-              className={cn("flex items-center")}
-              key={`word3-${w}-${idx + 1}`}
-            >
-              <span className={styleMap.word}>{w}</span>
-            </div>
-          ))}
-          <span className={cn("w-[42px]", "max-md:w-[20px]")} />
-          {CONTENTS["word4"].split("").map((w, idx) => (
-            <div
-              className={cn("flex items-center")}
-              key={`word3-${w}-${idx + 1}`}
-              onMouseEnter={handleMouseEnter("here")}
-            >
-              <span className={styleMap.word}>{w}</span>
-              <div
-                className={cn(
-                  "video-container",
-                  styleMap.base,
-                  "unvisible w-0 scale-0",
-                  idx === 1 &&
-                    active === "here" &&
-                    "visible mx-1 w-[150px] scale-100 opacity-100 hover:opacity-100 max-xl:w-[80px] max-xl:hover:w-[160px] max-md:w-[45px]",
-                )}
-              >
-                <Image
-                  alt=""
-                  fill
-                  priority
-                  src="https://res.cloudinary.com/dumqfde1s/image/upload/v1745226610/samples/chair-and-coffee-table.jpg"
-                />
-              </div>
-            </div>
-          ))}
+          {CONTENTS.slice(2, CONTENTS.length).map(
+            ({ word, src, activeKey, srcPosition }, idx) => {
+              return (
+                <Fragment key={activeKey}>
+                  {word.split("").map((w, idx) => (
+                    <div
+                      className={cn("flex items-center")}
+                      key={`${word}-${w}-${idx + 1}`}
+                      onMouseEnter={handleMouseEnter(activeKey)}
+                      onMouseLeave={handleMouseLeave}
+                    >
+                      <span className={styleMap.word}>{w}</span>
+                      <div
+                        className={cn(
+                          "video-container",
+                          styleMap.base,
+                          "unvisible w-0 scale-0",
+                          idx === srcPosition &&
+                            currentTurn?.name === activeKey &&
+                            "visible mx-1 w-[150px] scale-100 opacity-100 hover:opacity-100 max-xl:w-[80px] max-md:w-[45px]",
+                        )}
+                      >
+                        <Image alt="" fill priority src={src} />
+                      </div>
+                    </div>
+                  ))}
+                  {idx === 0 && (
+                    <span className={cn("w-[42px]", "max-md:w-[20px]")} />
+                  )}
+                </Fragment>
+              );
+            },
+          )}
         </div>
       </div>
     </Section>
