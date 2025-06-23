@@ -16,22 +16,12 @@ export default function Landing() {
   useGSAP(
     () => {
       gsap.to(titleRef.current, {
-        color: "#ffffff",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 48%",
-          end: "bottom 200%",
-          scrub: true,
-        },
-      });
-
-      gsap.to(titleRef.current, {
-        display: "none",
+        opacity: 0,
         ease: "power1.out",
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top top",
-          end: "bottom 40%",
+          end: "bottom 45%",
           scrub: true,
         },
       });
@@ -45,12 +35,13 @@ export default function Landing() {
         className={cn(
           "fixed top-0 right-[50%] left-[50%] z-10",
           "flex h-full items-center justify-center",
+          "pointer-events-none flex h-full items-center justify-center mix-blend-difference",
         )}
         ref={titleRef}
       >
         <h3
           className={cn(
-            "text-[150px] whitespace-pre",
+            "text-[150px] whitespace-pre text-white",
             "max-xl:text-[100px] max-md:text-[80px] max-sm:text-[50px]",
           )}
         >
