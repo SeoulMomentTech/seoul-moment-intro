@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { useId } from "react";
 import { cn } from "@/utils/style";
-import ImageSlider from "./ImageSlider";
 
 interface InfoBoxProps {
   title: string;
@@ -24,29 +23,35 @@ export default function InfoBox({
     <div
       className={cn(
         "flex scroll-mt-[120px] flex-col gap-[60px]",
-        "max-md:gap-[30px]",
+        "max-sm:gap-[30px]",
       )}
       id={linkId}
     >
-      <div className="flex flex-col gap-[20px]">
-        <h2 className="text-[40px] max-lg:text-[36px] max-md:text-[30px]">
+      <div className="flex flex-col gap-[20px] max-sm:gap-[30px]">
+        <h2 className="text-[40px] max-lg:text-[36px] max-sm:text-[20px]">
           <b>{title}</b>
         </h2>
-        <div>
+        <div className="flex flex-col gap-[10px]">
           <h4>
             <b>{subTitle}</b>
           </h4>
-          <p>{description}</p>
+          <p className="max-sm:text-[14px]">{description}</p>
         </div>
       </div>
 
-      <div className="info-box relative hidden max-md:block">
-        <ImageSlider images={images} />
-      </div>
-      <div className="flex gap-[20px] max-md:hidden">
+      <div
+        className={cn("flex gap-[20px]", "max-sm:flex-wrap max-sm:gap-[16px]")}
+      >
         {images.map((img) => (
-          <div className="relative aspect-[1/1.2] flex-1" key={`${img}-${id}`}>
-            <Image alt="" fill src={img} />
+          <div
+            className={cn(
+              "relative aspect-[1/1.2] flex-1",
+              "max-sm:h-[208px] max-sm:first:h-[184px]",
+              "max-sm:w-[45%] max-sm:first:w-full max-sm:first:flex-auto",
+            )}
+            key={`${img}-${id}`}
+          >
+            <Image alt="" className="object-cover" fill src={img} />
           </div>
         ))}
       </div>

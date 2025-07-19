@@ -2,7 +2,7 @@ import { useActiveSection } from "@/hooks/useActiveSection";
 import { cn } from "@/utils/style";
 
 export default function SideBar() {
-  const activeId = useActiveSection(["link1", "link2"]);
+  const activeId = useActiveSection(["link1", "link2", "link3"]);
 
   const handleClick = (hash: string) => () => {
     const target = document.querySelector(hash);
@@ -22,7 +22,7 @@ export default function SideBar() {
     >
       <button
         className={cn(
-          "text-start text-slate-300 hover:underline",
+          "cursor-pointer text-start text-black/50 hover:underline",
           (activeId === "link1" || activeId === "") && "font-bold text-black",
         )}
         onClick={handleClick("#link1")}
@@ -32,13 +32,23 @@ export default function SideBar() {
       </button>
       <button
         className={cn(
-          "text-start text-slate-300 hover:underline",
+          "cursor-pointer text-start text-black/50 hover:underline",
           activeId === "link2" && "font-bold text-black",
         )}
         onClick={handleClick("#link2")}
         type="button"
       >
-        다양한 느낌과 다양한 상품
+        Discover Style & Meaning
+      </button>
+      <button
+        className={cn(
+          "cursor-pointer text-start text-black/50 hover:underline",
+          activeId === "link3" && "font-bold text-black",
+        )}
+        onClick={handleClick("#link3")}
+        type="button"
+      >
+        Experience Seoul, Daily
       </button>
     </div>
   );
