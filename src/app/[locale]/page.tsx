@@ -1,4 +1,4 @@
-import BrandCoverflow from "./components/BrandCoverflow";
+import BrandCover from "./components/BrandCover";
 import CompanyIntro from "./components/CompanyIntro";
 import Ending from "./components/Ending";
 import HeroSlogan from "./components/HeroSlogan";
@@ -13,7 +13,7 @@ export default function Home() {
         <Landing />
         <HeroSlogan className="h-[calc(100vh-72px)] bg-white" />
         <CompanyIntro />
-        <BrandCoverflow />
+        <BrandCover />
         <Information />
         <Ending className="h-[1200px] bg-black max-md:h-[900px]" />
       </SectionsWrapper>
