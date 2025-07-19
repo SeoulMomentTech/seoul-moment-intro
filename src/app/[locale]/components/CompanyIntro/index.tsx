@@ -72,17 +72,21 @@ function CompanyIntro() {
   }, []);
 
   return (
-    <Section className={cn("company-intro relative bg-black", "h-[1080px]")}>
+    <Section
+      className={cn(
+        "company-intro relative bg-black",
+        "h-[1080px] max-md:h-full",
+      )}
+    >
       {info.map(({ img }, idx) => (
         <Image
           alt=""
           className={cn(
-            "scale-90 opacity-0 transition-all duration-500",
+            "scale-90 object-cover opacity-0 transition-all duration-500",
             idx === activeIdx && "scale-100 opacity-45",
           )}
           fill
           key={`${id}-${img}-company-intro`}
-          objectFit="cover"
           src={img}
         />
       ))}
@@ -91,19 +95,25 @@ function CompanyIntro() {
         className={cn(
           "relative",
           "mx-auto max-w-[1200px] pt-[140px]",
-          "max-xl:px-[20px] max-sm:py-[50px]",
+          "max-xl:px-[20px]",
+          "max-md:pt-[90px] max-md:pb-[60px]",
         )}
       >
-        <div className="h-[81px]">
+        <div
+          className={cn(
+            "h-[81px]",
+            "max-sm:flex max-sm:h-[44px] max-sm:flex-col max-sm:gap-[10px]",
+          )}
+        >
           <h2
             className={cn(
               "text-[36px] font-bold text-white",
-              "max-md:text-[24px]",
+              "leading-[100%] max-md:text-[20px]",
             )}
           >
             {info[activeIdx].title1}
           </h2>
-          <p className={cn("text-[18px] text-gray-200", "max-md:text-[16px]")}>
+          <p className={cn("text-[18px] text-gray-200", "max-md:text-[14px]")}>
             {info[activeIdx].description1}
           </p>
         </div>
@@ -132,7 +142,7 @@ function CompanyIntro() {
             </SwiperSlide>
           ))}
         </Swiper>
-        <div className="flex justify-end">
+        <div className={cn("flex justify-end", "max-sm:justify-center")}>
           <Pagination
             currentPage={activeIdx + 1}
             handleNext={handleNext}
