@@ -3,6 +3,7 @@
 import { ChevronDown } from "lucide-react";
 import Link from "next/link";
 import { useLocale } from "next-intl";
+import { cn } from "@/utils/style";
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -26,14 +27,21 @@ export default function LanguageSupport() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <button
-          className="flex min-w-[150px] justify-between rounded-[8px] border border-black px-[8px] py-[4px] text-start"
+          className={cn(
+            "flex min-w-[110px] items-center justify-between px-[8px] py-[4px] text-start",
+            "rounded-[8px] border border-black text-[14px]",
+            "max-md:min-w-[120px]",
+          )}
           type="button"
         >
           {locales[currentLocale]}
-          <ChevronDown />
+          <ChevronDown height={16} width={16} />
         </button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="min-w-[150px]" side="top">
+      <DropdownMenuContent
+        className="min-w-[110px] text-[14px] max-md:min-w-[120px]"
+        side="top"
+      >
         <DropdownMenuGroup>
           <DropdownMenuItem>
             <Link className="w-full" href="/ko">
