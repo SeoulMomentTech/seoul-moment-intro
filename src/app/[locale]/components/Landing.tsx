@@ -41,11 +41,11 @@ export default function Landing() {
       >
         <h3
           className={cn(
-            "text-[150px] whitespace-pre text-white",
+            "text-[150px] font-semibold whitespace-pre text-white",
             "max-xl:text-[100px] max-md:text-[80px] max-sm:text-[50px]",
           )}
         >
-          <b>Seoul Moment</b>
+          SEOUL MOMENT
         </h3>
       </div>
       <Section className="bg-white" />
