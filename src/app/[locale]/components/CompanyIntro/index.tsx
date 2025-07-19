@@ -1,6 +1,5 @@
 "use client";
 
-import { ArrowLeft, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { useCallback, useId, useRef, useState } from "react";
 import { EffectFade, Autoplay } from "swiper/modules";
@@ -9,6 +8,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import Section from "@/components/ui/section";
 import { cn } from "@/utils/style";
 import Card from "./Card";
+import Pagination from "./Pagination";
 
 import "swiper/css";
 import "swiper/css/effect-fade";
@@ -49,6 +49,7 @@ function CompanyIntro() {
   const id = useId();
   const swiperRef = useRef<SwiperRef | null>(null);
   const [activeIdx, setActiveIdx] = useState(0);
+  const [progress, setProgress] = useState(0);
 
   const handleNext = () => {
     if (!swiperRef.current) return;
@@ -67,10 +68,11 @@ function CompanyIntro() {
 
   const handleSlideChange = useCallback((swiper: SwiperRef["swiper"]) => {
     setActiveIdx(swiper.realIndex);
+    setProgress(0);
   }, []);
 
   return (
-    <Section className={cn("company-intro relative bg-black", "h-auto")}>
+    <Section className={cn("company-intro relative bg-black", "h-[1080px]")}>
       {info.map(({ img }, idx) => (
         <Image
           alt=""
@@ -88,11 +90,11 @@ function CompanyIntro() {
       <div
         className={cn(
           "relative",
-          "mx-auto max-w-[1200px] py-[100px]",
+          "mx-auto max-w-[1200px] pt-[140px]",
           "max-xl:px-[20px] max-sm:py-[50px]",
         )}
       >
-        <div>
+        <div className="h-[81px]">
           <h2
             className={cn(
               "text-[36px] font-bold text-white",
@@ -106,13 +108,15 @@ function CompanyIntro() {
           </p>
         </div>
         <Swiper
-          autoplay={{
-            delay: 5000,
-          }}
+          autoplay={{ delay: 5000 }}
           className="w-full"
           effect="fade"
           loop
           modules={[EffectFade, Autoplay]}
+          onAutoplay={() => setProgress(0)}
+          onAutoplayTimeLeft={(_, __, progressFraction) => {
+            setProgress(1 - progressFraction);
+          }}
           onSlideChange={handleSlideChange}
           ref={swiperRef}
           slidesPerView="auto"
@@ -129,28 +133,13 @@ function CompanyIntro() {
           ))}
         </Swiper>
         <div className="flex justify-end">
-          <div className="flex w-[400px] gap-[10px] pt-[32px]">
-            <button
-              className={cn(
-                "h-[44px] w-[44px] rounded-[12px] border border-white text-white",
-                "flex cursor-pointer items-center justify-center",
-              )}
-              onClick={handlePrev}
-              type="button"
-            >
-              <ArrowLeft />
-            </button>
-            <button
-              className={cn(
-                "h-[44px] w-[44px] rounded-[12px] border border-white text-white",
-                "flex cursor-pointer items-center justify-center",
-              )}
-              onClick={handleNext}
-              type="button"
-            >
-              <ArrowRight />
-            </button>
-          </div>
+          <Pagination
+            currentPage={activeIdx + 1}
+            handleNext={handleNext}
+            handlePrev={handlePrev}
+            progress={progress}
+            total={info.length}
+          />
         </div>
       </div>
     </Section>

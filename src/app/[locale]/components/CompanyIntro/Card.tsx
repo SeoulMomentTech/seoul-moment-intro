@@ -12,23 +12,28 @@ export default function Card({ title, subTitle, description }: CardProps) {
     <div className="flex justify-end">
       <div
         className={cn(
-          "flex min-h-[600px] w-[400px] flex-col justify-end text-white",
+          "flex min-h-[530px] w-[363px] flex-col justify-end pt-[300px] text-white",
           "max-sm:min-h-[360px]",
         )}
       >
-        <div className="flex flex-col gap-[20px]">
-          <div className="flex flex-col gap-[10px]">
-            <h3 className={cn("text-[32px] font-bold", "max-sm:text-[24px]")}>
+        <div className="flex min-h-[110px] flex-col gap-[20px]">
+          <div className="flex flex-col gap-[20px]">
+            <h3 className={cn("text-[20px] font-bold", "max-sm:text-[24px]")}>
               {title}
             </h3>
-            <p
-              className={cn("text-[18px] text-gray-200", "max-sm:text-[14px]")}
-            >
-              {subTitle}
-            </p>
+            {subTitle && (
+              <p
+                className={cn(
+                  "text-[16px] text-gray-200",
+                  "max-sm:text-[14px]",
+                )}
+              >
+                {subTitle}
+              </p>
+            )}
           </div>
-          <div className={cn("min-h-[155px]", "max-sm:min-h-auto")}>
-            <p className={cn("text-[24px]", "max-sm:text-[16px]")}>
+          <div className={cn("min-h-auto", "max-sm:min-h-auto")}>
+            <p className={cn("text-[18px]", "max-sm:text-[16px]")}>
               {description}
             </p>
           </div>
