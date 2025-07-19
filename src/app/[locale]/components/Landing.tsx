@@ -42,7 +42,7 @@ export default function Landing() {
         <h3
           className={cn(
             "text-[150px] font-semibold whitespace-pre text-white",
-            "max-xl:text-[100px] max-md:text-[80px] max-sm:text-[50px]",
+            "max-xl:text-[100px] max-md:text-[80px] max-sm:text-[40px]",
           )}
         >
           SEOUL MOMENT
