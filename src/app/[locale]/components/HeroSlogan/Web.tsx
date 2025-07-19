@@ -2,6 +2,7 @@
 
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { ChevronDown } from "lucide-react";
 import Image from "next/image";
 import { Fragment, useState } from "react";
 import Section from "@/components/ui/section";
@@ -47,11 +48,11 @@ const CONTENTS = [
 ];
 
 const styleMap = {
-  base: "overflow-hidden relative h-[150px] rounded-lg transition-all duration-700 max-xl:h-[80px] max-md:h-[45px] max-md:hidden ",
+  base: "overflow-hidden relative h-[150px] rounded-lg transition-all duration-700 max-xl:h-[80px] max-md:h-[45px] ",
   word: "inline-block max-md:text-[50px] max-sm:text-[40px]",
 };
 
-export default function HeroSlogan({ className }: Props) {
+export default function WebHeroSlogan({ className }: Props) {
   const [currentTurn, setCurrentTurn] = useState<Turn | null>(null);
   const [isPaused, setIsPaused] = useState(true);
 
@@ -114,7 +115,7 @@ export default function HeroSlogan({ className }: Props) {
     <Section
       className={cn(
         "section-one flex flex-col items-center justify-center",
-        "pb-[72px] max-md:pb-0",
+        "relative pb-[72px] max-md:pb-0 max-sm:hidden",
         className,
       )}
     >
@@ -200,6 +201,16 @@ export default function HeroSlogan({ className }: Props) {
             },
           )}
         </div>
+      </div>
+      <div
+        className={cn(
+          "flex items-center justify-center",
+          "h-[54px] w-[54px] rounded-full bg-black",
+          "absolute bottom-0 mb-[155px]",
+          "max-md:mb-[60px] max-md:h-[40px] max-md:w-[40px]",
+        )}
+      >
+        <ChevronDown className={cn("text-white")} height={24} width={24} />
       </div>
     </Section>
   );
