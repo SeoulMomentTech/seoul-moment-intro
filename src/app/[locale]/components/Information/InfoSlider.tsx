@@ -29,7 +29,7 @@ export default function InfoSlider({ info }: InfoSliderProps) {
   }, []);
 
   return (
-    <div className="w-full flex-col">
+    <div className="w-full flex-col max-sm:flex sm:hidden">
       <div className="mb-[20px] flex justify-end gap-[8px]">
         {info.map(({ linkId }, idx) => (
           <Bullet active={activeIdx === idx} key={`${id}-bullet-${linkId}`} />
