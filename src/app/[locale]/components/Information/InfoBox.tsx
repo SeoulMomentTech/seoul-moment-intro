@@ -28,14 +28,14 @@ export default function InfoBox({
       id={linkId}
     >
       <div className="flex flex-col gap-[20px] max-sm:gap-[30px]">
-        <h2 className="text-[40px] max-lg:text-[36px] max-sm:w-[320px] max-sm:text-[20px]">
+        <h2 className="text-[40px] max-lg:text-[36px] max-sm:h-[54px] max-sm:text-[20px]">
           <b>{title}</b>
         </h2>
         <div className="flex flex-col gap-[10px]">
           <h4>
             <b>{subTitle}</b>
           </h4>
-          <p className="max-sm:text-[14px]">{description}</p>
+          <p className="max-sm:h-[54px] max-sm:text-[14px]">{description}</p>
         </div>
       </div>
 
