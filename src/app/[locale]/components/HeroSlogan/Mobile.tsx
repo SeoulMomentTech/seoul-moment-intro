@@ -109,16 +109,17 @@ export default function MobileHeroSlogan({ className }: Props) {
         <TextContainer turn={currentTurn} />
         <ImageBox images={CONTENTS.map(({ src }) => src)} turn={currentTurn} />
       </div>
-      <div
+      <a
         className={cn(
           "flex items-center justify-center",
           "h-[54px] w-[54px] rounded-full bg-black",
           "absolute bottom-0 mb-[155px]",
           "max-md:mb-[60px] max-md:h-[40px] max-md:w-[40px]",
         )}
+        href="#contact-us"
       >
         <ChevronDown className={cn("text-white")} height={24} width={24} />
-      </div>
+      </a>
     </Section>
   );
 }
