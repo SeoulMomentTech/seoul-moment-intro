@@ -8,14 +8,14 @@ import SideBar from "./SideBar";
 
 const info = [
   {
-    title: "더 빠른 트렌드와 더 나은 서비스",
-    subTitle: `"서울의 느낌을 그대로"`,
+    title: "서울 모먼트의 철학, Brand Story & Quality",
+    subTitle: `“Trend Magazine = Seoul Life Style X Taiwan”`,
     description:
-      "한국의 트렌디 패션, 뷰티, 라이프스타일을 더욱 빠르게 즐길 수 있는 글로벌 감성 플렛폼.",
+      "한국의 트렌디한 패션, 뷰티, 라이프 스타일을 경험하고, 브랜드 스토리를 효과적이고 빠르게 전달 할 수 있는 글로벌 감성 플랫폼.",
     images: [
-      "https://res.cloudinary.com/dumqfde1s/image/upload/v1745226610/samples/look-up.jpg",
-      "https://res.cloudinary.com/dumqfde1s/image/upload/v1745226609/samples/balloons.jpg",
-      "https://res.cloudinary.com/dumqfde1s/image/upload/v1745226602/samples/landscapes/girl-urban-view.jpg",
+      "https://res.cloudinary.com/dumqfde1s/image/upload/v1753541296/belief1_shppz1.png",
+      "https://res.cloudinary.com/dumqfde1s/image/upload/v1753541286/belief2_ykbaxc.png",
+      "https://res.cloudinary.com/dumqfde1s/image/upload/v1753541320/belief3_c3n1bi.png",
     ],
     linkId: "link1",
   },
@@ -25,9 +25,9 @@ const info = [
     description:
       "남을 따라가는것이 아닌, 일상 속 자신만의 트렌드를 만들어가는 스토리텔링 커머스 플렛폼.",
     images: [
-      "https://res.cloudinary.com/dumqfde1s/image/upload/v1745226610/samples/look-up.jpg",
-      "https://res.cloudinary.com/dumqfde1s/image/upload/v1745226609/samples/balloons.jpg",
-      "https://res.cloudinary.com/dumqfde1s/image/upload/v1745226602/samples/landscapes/girl-urban-view.jpg",
+      "https://res.cloudinary.com/dumqfde1s/image/upload/v1753541414/style1_bwkm5z.png",
+      "https://res.cloudinary.com/dumqfde1s/image/upload/v1753541419/style2_nkbngi.png",
+      "https://res.cloudinary.com/dumqfde1s/image/upload/v1753541429/style3_dlo1uz.png",
     ],
     linkId: "link2",
   },
@@ -37,9 +37,9 @@ const info = [
     description:
       "대만 고객들에게 더욱 가깝게 브랜드를 만나 볼 수 있고, 새로운 기회와 경험을 만들어 갑니다.",
     images: [
-      "https://res.cloudinary.com/dumqfde1s/image/upload/v1745226610/samples/look-up.jpg",
-      "https://res.cloudinary.com/dumqfde1s/image/upload/v1745226609/samples/balloons.jpg",
-      "https://res.cloudinary.com/dumqfde1s/image/upload/v1745226602/samples/landscapes/girl-urban-view.jpg",
+      "https://res.cloudinary.com/dumqfde1s/image/upload/v1753541506/seoul1_ajfr2g.png",
+      "https://res.cloudinary.com/dumqfde1s/image/upload/v1753541508/seoul2_cbihvo.png",
+      "https://res.cloudinary.com/dumqfde1s/image/upload/v1753541514/seoul3_vfc2f9.png",
     ],
     linkId: "link3",
   },

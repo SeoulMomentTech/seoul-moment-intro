@@ -14,11 +14,11 @@ interface CoverflowProps {
 }
 
 const images = [
-  "https://res.cloudinary.com/dumqfde1s/image/upload/v1745226611/cld-sample-4.jpg",
-  "https://res.cloudinary.com/dumqfde1s/image/upload/v1745226611/cld-sample-5.jpg",
-  "https://res.cloudinary.com/dumqfde1s/image/upload/v1745226611/cld-sample-3.jpg",
-  "https://res.cloudinary.com/dumqfde1s/image/upload/v1745226611/cld-sample.jpg",
-  "https://res.cloudinary.com/dumqfde1s/image/upload/v1745226611/samples/coffee.jpg",
+  "https://res.cloudinary.com/dumqfde1s/image/upload/v1753543300/feeling1_lrmexf.png",
+  "https://res.cloudinary.com/dumqfde1s/image/upload/v1753541821/feeling4_j6gfek.png",
+  "https://res.cloudinary.com/dumqfde1s/image/upload/v1753541821/feeling2_tss05c.png",
+  "https://res.cloudinary.com/dumqfde1s/image/upload/v1753542066/feeling5_sbs6kq.png",
+  "https://res.cloudinary.com/dumqfde1s/image/upload/v1753541963/feeling3_n4ushn.png",
 ];
 
 export default function Coverflow({ className }: CoverflowProps) {
