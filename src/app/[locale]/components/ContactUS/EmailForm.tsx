@@ -21,7 +21,10 @@ export default function EmailForm() {
       onSubmit={handleSubmit(onSubmit)}
     >
       <div
-        className={cn("mb-[40px] flex flex-col gap-[10px]", "max-md:mb-[20px]")}
+        className={cn(
+          "mb-[40px] flex flex-col gap-[10px]",
+          "max-md:mb-[20px] max-md:text-center",
+        )}
       >
         <h4 className={cn("text-[20px] leading-[20px] font-semibold")}>
           Contact Us
