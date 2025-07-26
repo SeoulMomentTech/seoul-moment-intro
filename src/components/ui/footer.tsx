@@ -40,9 +40,13 @@ export default function Footer() {
         >
           <LanguageSupport />
           <div className="flex gap-[10px]">
-            <Link href="" rel="noopener noreferrer" target="_blank">
+            <Link
+              href="https://www.instagram.com/seoul_moment_tw"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
               <Image
-                alt="line"
+                alt="instagram"
                 className="max-md:h-[36px] max-md:w-[36px]"
                 height={50}
                 src="/insta.svg"
