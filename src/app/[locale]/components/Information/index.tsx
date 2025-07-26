@@ -53,6 +53,7 @@ export default function Information() {
         "mx-auto max-w-[2000px] py-[100px] pr-[140px] pl-[40px]",
         "flex h-auto justify-center gap-[8px]",
         "max-lg:px-[40px]",
+        "max-md:px-[20px]",
       )}
     >
       <SideBar />

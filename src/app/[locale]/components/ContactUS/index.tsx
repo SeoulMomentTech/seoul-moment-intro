@@ -28,7 +28,8 @@ export default function ContactUS() {
       <div
         className={cn(
           "flex justify-center pr-[180px] pl-[220px]",
-          "max-xl:px-[40px] max-md:rounded-t-[27px] max-md:bg-white",
+          "max-xl:px-[40px] max-md:rounded-t-[27px]",
+          "max-md:bg-white max-md:px-[20px]",
         )}
       >
         <div
