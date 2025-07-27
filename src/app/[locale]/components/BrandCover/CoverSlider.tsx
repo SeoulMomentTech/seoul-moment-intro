@@ -51,9 +51,8 @@ export default function CoverSlider({ className }: CoverSliderProps) {
             >
               <Image
                 alt=""
-                className="rounded-[18px]"
+                className="rounded-[18px] object-cover"
                 fill
-                objectFit="cover"
                 src={img}
               />
             </div>
