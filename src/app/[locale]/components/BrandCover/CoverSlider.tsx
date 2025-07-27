@@ -37,6 +37,7 @@ export default function CoverSlider({ className }: CoverSliderProps) {
       ref={swiperRef}
       slidesPerView="auto"
       spaceBetween={16}
+      updateOnWindowResize
     >
       {[...images, ...images].map((img, index) => {
         return (

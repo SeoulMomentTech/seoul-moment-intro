@@ -48,12 +48,13 @@ export default function Coverflow({ className }: CoverflowProps) {
       modules={[EffectCoverflow]}
       ref={swiperRef}
       slidesPerView="auto"
+      updateOnWindowResize
     >
       {[...images, ...images].map((img, index) => {
         return (
           <SwiperSlide
             className={cn(
-              "mx-[10px] min-h-[400px]! w-[30vw]!",
+              "mx-[10px] min-h-[400px]! w-[720px]! max-2xl:w-[30vw]!",
               "max-md:min-h-[200px]! max-md:w-[40vw]!",
             )}
             key={`card-${index + 1}`}
@@ -61,7 +62,7 @@ export default function Coverflow({ className }: CoverflowProps) {
           >
             <div
               className={cn(
-                "relative min-h-[260px]! w-[30vw]! cursor-pointer",
+                "relative min-h-[260px]! cursor-pointer max-2xl:w-[30vw]!",
                 "max-md:min-h-[200px]! max-md:w-[40vw]!",
               )}
             >

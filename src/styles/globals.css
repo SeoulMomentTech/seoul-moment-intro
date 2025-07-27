@@ -165,12 +165,22 @@ body {
   width: 100%;
 }
 
+.cover-flow .swiper-slide {
+  @apply 2xl:w-[400px]! 2xl:max-w-[500px]!;
+}
+
+.cover-flow .swiper-slide div {
+  @apply 2xl:w-full! 2xl:max-w-[500px]!;
+}
+
 .cover-flow .swiper-slide-active {
   @apply min-h-[400px] scale-110 transition-all;
+  @apply 2xl:w-[720px]!;
 }
 
 .cover-flow .swiper-slide-active > div {
   @apply scale-125 transition-all duration-300;
+  @apply 2xl:w-[720px]!;
 }
 
 .info-box .swiper-pagination-bullet {
