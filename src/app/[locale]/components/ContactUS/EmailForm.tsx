@@ -1,5 +1,6 @@
 "use client";
 
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import type { SubmitHandler } from "react-hook-form";
 import { useForm } from "react-hook-form";
 import { cn } from "@/utils/style";
@@ -12,8 +13,18 @@ interface EmailInputs {
 
 export default function EmailForm() {
   const { register, handleSubmit } = useForm<EmailInputs>();
+  const { executeRecaptcha } = useGoogleReCaptcha();
 
-  const onSubmit: SubmitHandler<EmailInputs> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<EmailInputs> = async (data) => {
+    if (!executeRecaptcha) {
+      console.log("Execute recaptcha not yet available");
+      return;
+    }
+
+    const token = await executeRecaptcha("sendEmail");
+    console.log(token, data);
+    // Do whatever you want with the token
+  };
 
   return (
     <form
