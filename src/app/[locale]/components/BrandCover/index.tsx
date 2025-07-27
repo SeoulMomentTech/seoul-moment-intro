@@ -17,7 +17,7 @@ export default function BrandCover({ className }: Props) {
   return (
     <Section
       className={cn(
-        "section-2 relative mx-auto flex max-w-[2200px] flex-col items-center justify-center gap-[52px] py-15",
+        "section-2 relative mx-auto flex max-w-[1920px] flex-col items-center justify-center gap-[52px] py-15",
         "max-sm:h-auto max-sm:gap-[60px] max-sm:px-[20px] max-sm:py-[90px]",
         className,
       )}

@@ -20,7 +20,7 @@ export default function ContactUS() {
   return (
     <Section
       className={cn(
-        "mx-auto h-[761px] max-w-[2000px] max-2xl:h-auto",
+        "mx-auto h-[761px] max-w-[1920px] max-2xl:h-auto",
         "max-md:bg-black max-md:pt-[24px]",
       )}
       id="contact-us"
