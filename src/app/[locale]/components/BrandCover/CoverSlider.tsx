@@ -32,6 +32,7 @@ export default function CoverSlider({ className }: CoverSliderProps) {
   return (
     <Swiper
       className={cn("cover-slider w-full", className)}
+      loop
       loopAdditionalSlides={1}
       ref={swiperRef}
       slidesPerView="auto"
