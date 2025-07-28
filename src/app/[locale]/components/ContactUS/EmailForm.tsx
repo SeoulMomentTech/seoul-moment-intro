@@ -12,7 +12,7 @@ interface EmailInputs {
   message: string;
 }
 
-const RECAPTCHA_SITE_KEY = "6Ld465ErAAAAAKlKZ3ZLH6onZcD0A28FfBAFB4Up";
+const RECAPTCHA_SITE_KEY = "6LftGZIrAAAAAKwcHWIlep_I8IOvfxW2XsIG0AwM";
 
 export default function EmailForm() {
   const { register, handleSubmit } = useForm<EmailInputs>();
