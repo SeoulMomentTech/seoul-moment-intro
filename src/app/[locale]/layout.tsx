@@ -4,7 +4,6 @@ import { getMessages } from "next-intl/server";
 import type { PropsWithChildren } from "react";
 import Footer from "@/components/ui/footer";
 import Header from "@/components/ui/header";
-import GoogleCapcha from "./components/GoogleCapcha";
 
 import "@/styles/globals.css";
 
@@ -30,13 +29,9 @@ export default async function RootLayout({
     <html className="scroll-smooth" lang={locale ?? "ko"}>
       <body>
         <NextIntlClientProvider messages={messages}>
-          <GoogleCapcha>
-            <Header />
-            <main className="relative min-h-[calc(100vh-70px)]">
-              {children}
-            </main>
-            <Footer />
-          </GoogleCapcha>
+          <Header />
+          <main className="relative min-h-[calc(100vh-70px)]">{children}</main>
+          <Footer />
         </NextIntlClientProvider>
       </body>
     </html>

@@ -1,6 +1,7 @@
 "use client";
 
-import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
+import { useRef, useState } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
 import type { SubmitHandler } from "react-hook-form";
 import { useForm } from "react-hook-form";
 import { cn } from "@/utils/style";
@@ -11,18 +12,19 @@ interface EmailInputs {
   message: string;
 }
 
+const RECAPTCHA_SITE_KEY = "6Ld465ErAAAAAKlKZ3ZLH6onZcD0A28FfBAFB4Up";
+
 export default function EmailForm() {
   const { register, handleSubmit } = useForm<EmailInputs>();
-  const { executeRecaptcha } = useGoogleReCaptcha();
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
+  const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
 
   const onSubmit: SubmitHandler<EmailInputs> = async (data) => {
-    if (!executeRecaptcha) {
-      console.log("Execute recaptcha not yet available");
+    if (!recaptchaToken) {
+      alert("Please complete the reCAPTCHA.");
       return;
     }
-
-    const token = await executeRecaptcha("sendEmail");
-    console.log(token, data);
+    console.log(recaptchaToken, data);
     // Do whatever you want with the token
   };
 
@@ -93,6 +95,21 @@ export default function EmailForm() {
             This site is protected by reCAPTCHA and the Google Privacy Polict
             and Terms of Service apply.
           </span>
+          <div
+            className={cn(
+              "flex justify-center",
+              "max-2xl:justify-start",
+              "max-md:justify-center",
+            )}
+          >
+            <ReCAPTCHA
+              onChange={setRecaptchaToken}
+              onError={() => setRecaptchaToken(null)}
+              ref={recaptchaRef}
+              sitekey={RECAPTCHA_SITE_KEY}
+              size="normal"
+            />
+          </div>
         </div>
       </div>
     </form>
