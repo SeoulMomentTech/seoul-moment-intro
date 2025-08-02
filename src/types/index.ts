@@ -6,3 +6,8 @@ declare module "react" {
     [key: `--${string}`]: string | number;
   }
 }
+
+export interface ModalStatus {
+  open: boolean;
+  type: string;
+}
