@@ -40,6 +40,7 @@
   --color-card: var(--card);
   --color-gray: #707070;
   --color-error: #ff383c;
+  --color-sent: #0088ff;
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);

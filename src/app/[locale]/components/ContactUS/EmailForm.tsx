@@ -1,117 +1,264 @@
 "use client";
 
+import Image from "next/image";
 import { useRef, useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import type { SubmitHandler } from "react-hook-form";
 import { useForm } from "react-hook-form";
+import type { ModalStatus } from "@/types";
 import { cn } from "@/utils/style";
+import AlertModal from "../modal/AlertModal";
+import Button from "../ui/button";
 
 interface EmailInputs {
   name: string;
   email: string;
   message: string;
+  code: string;
+  isVerified: boolean;
 }
 
 const RECAPTCHA_SITE_KEY = "6LftGZIrAAAAAKwcHWIlep_I8IOvfxW2XsIG0AwM";
 
 export default function EmailForm() {
-  const { register, handleSubmit } = useForm<EmailInputs>();
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm<EmailInputs>();
+  const formValues = watch();
+
   const recaptchaRef = useRef<ReCAPTCHA>(null);
   const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
+  const [isCodeSent, setIsCodeSent] = useState(false);
+  const [modalOpen, setModalOpen] = useState<ModalStatus | null>(null);
+
+  const isEmpty = Object.values(formValues).every(
+    (value) => value === "" || value == null,
+  );
+  const isDisabled = Object.keys(errors).length > 0 || isEmpty;
 
   const onSubmit: SubmitHandler<EmailInputs> = async (data) => {
     if (!recaptchaToken) {
       alert("Please complete the reCAPTCHA.");
       return;
     }
-    console.log(recaptchaToken, data);
-    // Do whatever you want with the token
+
+    try {
+      console.log(recaptchaToken, data);
+      // Do whatever you want with the token
+    } catch {
+      setModalOpen({
+        type: "error",
+        open: true,
+      });
+    }
+  };
+
+  const handleClickVerify = () => {
+    setIsCodeSent(true);
+  };
+
+  const handleOpen = (type: string) => (open: boolean) => {
+    setModalOpen({
+      type,
+      open,
+    });
   };
 
   return (
-    <form
-      className={cn("flex w-full max-w-[585px] flex-col", "max-2xl:max-w-none")}
-      onSubmit={handleSubmit(onSubmit)}
-    >
-      <div
+    <>
+      <form
         className={cn(
-          "mb-[40px] flex flex-col gap-[10px]",
-          "max-md:mb-[20px] max-md:text-center",
+          "flex w-full max-w-[585px] flex-col",
+          "max-2xl:max-w-none",
         )}
+        onSubmit={handleSubmit(onSubmit)}
       >
-        <h4 className={cn("text-[20px] leading-[20px] font-semibold")}>
-          Contact Us
-        </h4>
-        <span className={cn("text-[14px] text-black/40")}>Drop us a line!</span>
-      </div>
-      <div className={cn("flex flex-col gap-[40px]", "max-md:gap-[20px]")}>
-        <div className="flex flex-col gap-[30px]">
-          <input
-            className={cn(
-              "rounded-[4px] border border-black/20 px-[12px] py-[16px]",
-              "text-[16px] leading-[16px]",
-            )}
-            placeholder="Name"
-            {...register("name", { required: true })}
-          />
-          <div className="flex flex-col gap-[8px]">
-            <input
-              className={cn(
-                "rounded-[4px] border border-black/20 px-[12px] py-[16px]",
-                "text-[16px] leading-[16px]",
-              )}
-              placeholder="Email*"
-              {...register("email", {
-                required: true,
-                pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-              })}
-            />
-            <span className="text-gray">
-              Please enter a valid email address.
-            </span>
-          </div>
-          <textarea
-            className={cn(
-              "h-[100px] rounded-[4px] border border-black/20 px-[12px] py-[16px]",
-              "resize-none text-[16px] leading-[16px]",
-            )}
-            placeholder="Message"
-            {...register("message", { required: true })}
-          />
-        </div>
-        <div className="flex flex-col gap-[10px]">
-          <button
-            className="cursor-pointer rounded-[4px] bg-black p-[16px] font-semibold text-white"
-            type="submit"
-          >
-            SEND
-          </button>
-          <span
-            className={cn(
-              "text-[14px] leading-[14px] text-black/40",
-              "max-md:text-[12px] max-md:leading-[12px]",
-            )}
-          >
-            This site is protected by reCAPTCHA and the Google Privacy Polict
-            and Terms of Service apply.
+        <div
+          className={cn(
+            "mb-[20px] flex flex-col gap-[10px]",
+            "max-md:mb-[20px] max-md:text-center",
+          )}
+        >
+          <h4 className={cn("text-[20px] leading-[20px] font-semibold")}>
+            Contact Us
+          </h4>
+          <span className={cn("text-[14px] text-black/40")}>
+            서울모먼트는 감각적인 연결을 만들어갑니다.{" "}
+            <br className="hidden max-md:inline" /> 당신의 이야기를 기다리고
+            있습니다.
           </span>
-          <div
-            className={cn(
-              "flex justify-center",
-              "max-2xl:justify-start",
-              "max-md:justify-center",
+        </div>
+        <div
+          className={cn(
+            "flex items-center justify-center gap-[10px]",
+            "mb-[40px] bg-black/5 p-[16px]",
+            "rounded-[4px] text-[13px]",
+            "max-md:mb-[20px] max-md:flex-col",
+          )}
+        >
+          <span className="text-center text-black/60">
+            ✉ 고객 응대 및 피드백
+          </span>
+          <div className={cn("h-[8px] w-[1px] bg-black/40", "max-md:hidden")} />
+          <span className="text-center text-black/60">
+            🤝  브랜드 제휴·유통 협력 (한/대만)
+          </span>
+          <div className={cn("h-[8px] w-[1px] bg-black/40", "max-md:hidden")} />
+          <span className="text-center text-black/60">
+            🎥  인플루언서 및 콘텐츠 파트너 제안
+          </span>
+        </div>
+        <div className={cn("flex flex-col gap-[40px]")}>
+          <div className={cn("flex flex-col gap-[30px]", "max-md:gap-[20px]")}>
+            <div className="flex flex-col gap-[8px]">
+              <input
+                className={cn(
+                  "rounded-[4px] border border-black/20 px-[12px] py-[16px]",
+                  "text-[16px] leading-[16px]",
+                  "placeholder:text-black/20",
+                )}
+                placeholder="Your Name"
+                {...register("name", { required: "Please enter your name." })}
+              />
+              {errors.name && (
+                <span className="text-error">{errors.name.message}</span>
+              )}
+            </div>
+            <div className="flex flex-col gap-[8px]">
+              <div className="flex gap-[8px]">
+                <input
+                  className={cn(
+                    "flex-1 rounded-[4px] border border-black/20 px-[12px] py-[16px]",
+                    "text-[16px] leading-[16px]",
+                    "placeholder:text-black/20",
+                  )}
+                  placeholder="Please enter your email"
+                  {...register("email", {
+                    required: "Please enter your email.",
+                    pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                  })}
+                />
+                <Button disabled={isCodeSent} onClick={handleClickVerify}>
+                  인증
+                </Button>
+              </div>
+              {errors.email && (
+                <span className="text-error">{errors.email.message}</span>
+              )}
+              {isCodeSent && (
+                <span className="text-sent">
+                  Verification code has been sent.
+                </span>
+              )}
+            </div>
+            {isCodeSent && (
+              <div className="flex flex-col gap-[8px]">
+                <div className="flex gap-[8px]">
+                  <input
+                    className={cn(
+                      "flex-1 rounded-[4px] border border-black/20 px-[12px] py-[16px]",
+                      "text-[16px] leading-[16px]",
+                      "placeholder:text-black/20",
+                    )}
+                    placeholder="Please enter the verification code"
+                    {...register("code", {
+                      required: "Code is incorrect, Please check again.",
+                    })}
+                  />
+                  <Button>확인</Button>
+                </div>
+              </div>
             )}
-          >
-            <ReCAPTCHA
-              onChange={setRecaptchaToken}
-              onError={() => setRecaptchaToken(null)}
-              ref={recaptchaRef}
-              sitekey={RECAPTCHA_SITE_KEY}
-              size="normal"
-            />
+            <div className="flex flex-col gap-[8px]">
+              <textarea
+                className={cn(
+                  "h-[100px] rounded-[4px] border border-black/20 px-[12px] py-[16px]",
+                  "resize-none rounded-[4px] text-[16px] leading-[16px]",
+                  "placeholder:text-black/20",
+                )}
+                placeholder="Write your message(30 characters)"
+                {...register("message", {
+                  required: "Please enter your message.",
+                  minLength: {
+                    value: 30,
+                    message: "Please enter at least 30 characters.",
+                  },
+                })}
+              />
+              {errors.message && (
+                <span className="text-error">{errors.message.message}</span>
+              )}
+            </div>
+          </div>
+          <div className="flex flex-col gap-[10px]">
+            <Button
+              className="p-[16px] font-semibold"
+              disabled={isDisabled}
+              type="submit"
+            >
+              Send Message
+            </Button>
+            <span
+              className={cn(
+                "text-[14px] leading-[14px] text-black/40",
+                "max-md:text-[12px] max-md:leading-[12px]",
+              )}
+            >
+              This site is protected by reCAPTCHA and the Google Privacy Polict
+              and Terms of Service apply.
+            </span>
+            <div
+              className={cn(
+                "flex justify-center",
+                "max-2xl:justify-start",
+                "max-md:justify-center",
+              )}
+            >
+              <ReCAPTCHA
+                onChange={setRecaptchaToken}
+                onError={() => setRecaptchaToken(null)}
+                ref={recaptchaRef}
+                sitekey={RECAPTCHA_SITE_KEY}
+                size="normal"
+              />
+            </div>
           </div>
         </div>
-      </div>
-    </form>
+      </form>
+      {modalOpen?.type === "success" && (
+        <AlertModal
+          onClickOK={() => handleOpen("success")(false)}
+          onOpenChange={handleOpen("success")}
+          open={modalOpen?.open}
+        >
+          <div className="flex flex-col items-center justify-center gap-[24px]">
+            <Image alt="" height={40} src="/alert_complete.svg" width={40} />
+            <p className="text-center">
+              Your message has been sent <br />
+              successfully. Thank you.
+            </p>
+          </div>
+        </AlertModal>
+      )}
+      {modalOpen?.type === "error" && (
+        <AlertModal
+          onClickOK={() => handleOpen("error")(false)}
+          onOpenChange={handleOpen("error")}
+          open={modalOpen?.open}
+        >
+          <div className="flex flex-col items-center justify-center gap-[24px]">
+            <Image alt="" height={40} src="/alert_error.svg" width={40} />
+            <p className="text-center">
+              An error occurred while sending.
+              <br />
+              Please try again later.
+            </p>
+          </div>
+        </AlertModal>
+      )}
+    </>
   );
 }

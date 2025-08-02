@@ -20,7 +20,7 @@ export default function ContactUS() {
   return (
     <Section
       className={cn(
-        "mx-auto h-[761px] max-w-[1920px] max-2xl:h-auto",
+        "mx-auto h-auto max-w-[1920px] max-2xl:h-auto",
         "max-md:bg-black max-md:pt-[24px]",
       )}
       id="contact-us"
@@ -34,7 +34,7 @@ export default function ContactUS() {
       >
         <div
           className={cn(
-            "flex w-full max-w-[1592px] justify-center gap-[132px] pt-[140px] pb-[140px]",
+            "flex w-full max-w-[1592px] justify-around gap-[60px] pt-[140px] pb-[140px]",
             "max-2xl:flex-col max-2xl:gap-[132px]",
             "max-md:gap-[60px] max-md:pt-[60px] max-md:pb-[90px]",
           )}
@@ -69,20 +69,30 @@ export default function ContactUS() {
               </div>
               <Image
                 alt=""
-                className="max-md:w-[80px]"
+                className="max-2xl:hidden max-md:block max-md:w-[80px]"
                 height={163}
                 src="/qrcode.png"
                 width={163}
               />
             </div>
-            <h4
-              className={cn(
-                "w-[485px] text-[80px] leading-[80px] font-bold",
-                "max-w-[485px] max-md:w-auto max-md:text-center max-md:text-[44px] max-md:leading-[44px]",
-              )}
-            >
-              We’re Waiting for Our Moment
-            </h4>
+            <div className="flex items-end justify-between">
+              <h4
+                className={cn(
+                  "w-[485px] text-[80px] leading-[80px] font-bold",
+                  "max-2xl:w-auto max-2xl:max-w-[751px]",
+                  "max-w-[485px] max-md:w-auto max-md:text-center max-md:text-[44px] max-md:leading-[44px]",
+                )}
+              >
+                We’re Waiting for Our Moment
+              </h4>
+              <Image
+                alt=""
+                className="hidden max-2xl:block max-md:hidden"
+                height={163}
+                src="/qrcode.png"
+                width={163}
+              />
+            </div>
           </div>
           <EmailForm />
         </div>
