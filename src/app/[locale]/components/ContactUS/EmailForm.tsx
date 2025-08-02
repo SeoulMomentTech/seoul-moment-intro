@@ -9,6 +9,7 @@ import type { ModalStatus } from "@/types";
 import { cn } from "@/utils/style";
 import AlertModal from "../modal/AlertModal";
 import Button from "../ui/button";
+import Divider from "../ui/divider";
 
 interface EmailInputs {
   name: string;
@@ -102,11 +103,11 @@ export default function EmailForm() {
           <span className="text-center text-black/60">
             ✉ 고객 응대 및 피드백
           </span>
-          <div className={cn("h-[8px] w-[1px] bg-black/40", "max-md:hidden")} />
+          <Divider className="max-md:hidden" />
           <span className="text-center text-black/60">
             🤝  브랜드 제휴·유통 협력 (한/대만)
           </span>
-          <div className={cn("h-[8px] w-[1px] bg-black/40", "max-md:hidden")} />
+          <Divider className="max-md:hidden" />
           <span className="text-center text-black/60">
             🎥  인플루언서 및 콘텐츠 파트너 제안
           </span>
@@ -141,7 +142,11 @@ export default function EmailForm() {
                     pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
                   })}
                 />
-                <Button disabled={isCodeSent} onClick={handleClickVerify}>
+                <Button
+                  className="max-md:leading-[16px]"
+                  disabled={isCodeSent}
+                  onClick={handleClickVerify}
+                >
                   인증
                 </Button>
               </div>
@@ -168,7 +173,7 @@ export default function EmailForm() {
                       required: "Code is incorrect, Please check again.",
                     })}
                   />
-                  <Button>확인</Button>
+                  <Button className="max-md:leading-[16px]">확인</Button>
                 </div>
               </div>
             )}
@@ -195,7 +200,7 @@ export default function EmailForm() {
           </div>
           <div className="flex flex-col gap-[10px]">
             <Button
-              className="p-[16px] font-semibold"
+              className="p-[16px] font-semibold max-md:px-[20px] max-md:leading-[16px]"
               disabled={isDisabled}
               type="submit"
             >
