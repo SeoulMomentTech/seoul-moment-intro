@@ -29,7 +29,6 @@ const info = [
         중점을 둡니다.
       </>
     ),
-    img: "https://res.cloudinary.com/dumqfde1s/image/upload/v1745226610/samples/look-up.jpg",
     videoWeb:
       "https://res.cloudinary.com/dumqfde1s/video/upload/v1754223651/korea_web_kshxak.mp4",
     videoMobile:
@@ -47,7 +46,6 @@ const info = [
         서울과 타이완, 공감으로 이어집니다.
       </>
     ),
-    img: "https://res.cloudinary.com/dumqfde1s/image/upload/v1745226609/samples/balloons.jpg",
     videoWeb:
       "https://res.cloudinary.com/dumqfde1s/video/upload/v1754223697/taiwan_web_ge8q0h.mp4",
     videoMobile:
@@ -68,8 +66,6 @@ const info = [
         만들어갑니다.
       </>
     ),
-
-    img: "https://res.cloudinary.com/dumqfde1s/image/upload/v1745226602/samples/landscapes/girl-urban-view.jpg",
     videoWeb:
       "https://res.cloudinary.com/dumqfde1s/video/upload/v1754223625/intro_gnid8x.mp4",
     videoMobile:
@@ -111,21 +107,25 @@ function CompanyIntro() {
         "h-[1080px] max-md:h-full",
       )}
     >
-      {info.map(({ img, videoWeb, videoMobile }, idx) => (
-        <video
-          autoPlay
-          className={cn(
-            "absolute h-full w-full scale-90 object-cover opacity-0 transition-all duration-500",
-            idx === activeIdx && "scale-100 opacity-45",
-          )}
-          key={`${id}-${img}-company-intro-${isMobile ? "mobile" : "web"}`}
-          loop
-          muted
-          playsInline
-          preload="auto"
-          src={isMobile ? videoMobile : videoWeb}
-        />
-      ))}
+      {info.map(({ videoWeb, videoMobile }, idx) => {
+        if (idx !== activeIdx) return null;
+
+        return (
+          <video
+            autoPlay
+            className={cn(
+              "absolute h-full w-full scale-90 object-cover opacity-0 transition-all duration-500",
+              idx === activeIdx && "scale-100 opacity-45",
+            )}
+            key={`${id}-${idx + 1}-company-intro-${isMobile ? "mobile" : "web"}`}
+            loop
+            muted
+            playsInline
+            preload="auto"
+            src={isMobile ? videoMobile : videoWeb}
+          />
+        );
+      })}
       <div
         className={cn(
           "relative",
