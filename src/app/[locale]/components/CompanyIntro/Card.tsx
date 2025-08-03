@@ -24,7 +24,7 @@ export default function Card({ title, subTitle, description }: CardProps) {
           )}
         >
           <div className="flex flex-col gap-[20px]">
-            <h3 className={cn("text-[20px] font-bold", "max-md:text-[14px]")}>
+            <h3 className={cn("text-[20px] font-bold", "max-md:text-[19px]")}>
               {title}
             </h3>
             {subTitle && (
