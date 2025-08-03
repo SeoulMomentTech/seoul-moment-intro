@@ -26,8 +26,19 @@ export default function EmailForm() {
     register,
     handleSubmit,
     watch,
+    trigger,
+    reset,
+    setValue,
     formState: { errors },
-  } = useForm<EmailInputs>();
+  } = useForm<EmailInputs>({
+    defaultValues: {
+      message: "",
+      email: "",
+      code: "",
+      isVerified: false,
+      name: "",
+    },
+  });
   const formValues = watch();
 
   const recaptchaRef = useRef<ReCAPTCHA>(null);
@@ -35,8 +46,8 @@ export default function EmailForm() {
   const [isCodeSent, setIsCodeSent] = useState(false);
   const [modalOpen, setModalOpen] = useState<ModalStatus | null>(null);
 
-  const isEmpty = Object.values(formValues).every(
-    (value) => value === "" || value == null,
+  const isEmpty = Object.values(formValues).some(
+    (value) => value === "" || value == null || value === false,
   );
   const isDisabled = Object.keys(errors).length > 0 || isEmpty;
 
@@ -49,6 +60,10 @@ export default function EmailForm() {
     try {
       console.log(recaptchaToken, data);
       // Do whatever you want with the token
+      setModalOpen({
+        type: "success",
+        open: true,
+      });
     } catch {
       setModalOpen({
         type: "error",
@@ -57,8 +72,18 @@ export default function EmailForm() {
     }
   };
 
-  const handleClickVerify = () => {
+  const handleClickVerify = async () => {
+    const isValid = await trigger("email");
+
+    if (!isValid) {
+      return;
+    }
+
     setIsCodeSent(true);
+  };
+
+  const handleCheckCode = () => {
+    setValue("isVerified", true);
   };
 
   const handleOpen = (type: string) => (open: boolean) => {
@@ -139,7 +164,10 @@ export default function EmailForm() {
                   placeholder="Please enter your email"
                   {...register("email", {
                     required: "Please enter your email.",
-                    pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                    pattern: {
+                      value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                      message: "Please enter a valid email address.",
+                    },
                   })}
                 />
                 <Button
@@ -160,22 +188,35 @@ export default function EmailForm() {
               )}
             </div>
             {isCodeSent && (
-              <div className="flex flex-col gap-[8px]">
-                <div className="flex gap-[8px]">
-                  <input
-                    className={cn(
-                      "flex-1 rounded-[4px] border border-black/20 px-[12px] py-[16px]",
-                      "text-[16px] leading-[16px]",
-                      "placeholder:text-black/20",
-                    )}
-                    placeholder="Please enter the verification code"
-                    {...register("code", {
-                      required: "Code is incorrect, Please check again.",
-                    })}
-                  />
-                  <Button className="max-md:leading-[16px]">확인</Button>
+              <>
+                <div className="flex flex-col gap-[8px]">
+                  <div className="flex gap-[8px]">
+                    <input
+                      className={cn(
+                        "flex-1 rounded-[4px] border border-black/20 px-[12px] py-[16px]",
+                        "text-[16px] leading-[16px]",
+                        "placeholder:text-black/20",
+                      )}
+                      placeholder="Please enter the verification code"
+                      {...register("code", {
+                        required: "Code is incorrect, Please check again.",
+                      })}
+                    />
+                    <Button
+                      className="max-md:leading-[16px]"
+                      disabled={!formValues.code}
+                      onClick={handleCheckCode}
+                    >
+                      확인
+                    </Button>
+                  </div>
                 </div>
-              </div>
+                {formValues.isVerified && (
+                  <span className="text-sent">
+                    Email verified successfully.
+                  </span>
+                )}
+              </>
             )}
             <div className="flex flex-col gap-[8px]">
               <textarea
@@ -235,7 +276,10 @@ export default function EmailForm() {
       </form>
       {modalOpen?.type === "success" && (
         <AlertModal
-          onClickOK={() => handleOpen("success")(false)}
+          onClickOK={() => {
+            handleOpen("success")(false);
+            reset();
+          }}
           onOpenChange={handleOpen("success")}
           open={modalOpen?.open}
         >
