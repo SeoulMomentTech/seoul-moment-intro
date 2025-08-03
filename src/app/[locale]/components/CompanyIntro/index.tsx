@@ -9,6 +9,7 @@ import useMediaQuery from "@/hooks/useMediaQuery";
 import { cn } from "@/utils/style";
 import Card from "./Card";
 import Pagination from "./Pagination";
+import Video from "./Video";
 
 import "swiper/css";
 import "swiper/css/effect-fade";
@@ -108,10 +109,9 @@ function CompanyIntro() {
       )}
     >
       {info.map(({ videoWeb, videoMobile }, idx) => {
-        if (idx !== activeIdx) return null;
-
         return (
-          <video
+          <Video
+            active={idx === activeIdx}
             autoPlay
             className={cn(
               "absolute h-full w-full scale-90 object-cover opacity-0 transition-all duration-500",
@@ -121,7 +121,7 @@ function CompanyIntro() {
             loop
             muted
             playsInline
-            preload="auto"
+            preload="metadata"
             src={isMobile ? videoMobile : videoWeb}
           />
         );
