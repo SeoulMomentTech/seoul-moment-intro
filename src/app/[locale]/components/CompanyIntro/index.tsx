@@ -98,17 +98,13 @@ function CompanyIntro() {
             "absolute h-full w-full scale-90 object-cover opacity-0 transition-all duration-500",
             idx === activeIdx && "scale-100 opacity-45",
           )}
-          key={`${id}-${img}-company-intro`}
+          key={`${id}-${img}-company-intro-${isMobile ? "mobile" : "web"}`}
           loop
           muted
           playsInline
           preload="auto"
         >
-          <source
-            className="max-md:hidden"
-            src={isMobile ? videoMobile : videoWeb}
-            type="video/mp4"
-          />
+          <source src={isMobile ? videoMobile : videoWeb} type="video/mp4" />
         </video>
       ))}
       <div
