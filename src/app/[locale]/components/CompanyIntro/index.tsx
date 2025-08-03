@@ -101,8 +101,15 @@ function CompanyIntro() {
           key={`${id}-${img}-company-intro`}
           loop
           muted
-          src={isMobile ? videoMobile : videoWeb}
-        />
+          playsInline
+          preload="auto"
+        >
+          <source
+            className="max-md:hidden"
+            src={isMobile ? videoMobile : videoWeb}
+            type="video/mp4"
+          />
+        </video>
       ))}
       <div
         className={cn(
