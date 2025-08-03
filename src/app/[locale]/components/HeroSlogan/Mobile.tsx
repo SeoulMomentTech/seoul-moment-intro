@@ -8,6 +8,7 @@ import { Fragment, useState } from "react";
 import Section from "@/components/ui/section";
 import useInterval from "@/hooks/useInterval";
 import { cn } from "@/utils/style";
+import { CONTENTS } from ".";
 
 interface Props {
   className?: string;
@@ -19,33 +20,6 @@ interface Turn {
 }
 
 const turns = ["make", "your", "here", "seoul"];
-
-const CONTENTS = [
-  {
-    word: "MAKE",
-    activeKey: "make",
-    srcPosition: 1,
-    src: "https://res.cloudinary.com/dumqfde1s/image/upload/v1745226611/samples/dessert-on-a-plate.jpg",
-  },
-  {
-    word: "YOUR",
-    activeKey: "your",
-    srcPosition: 1,
-    src: "https://res.cloudinary.com/dumqfde1s/image/upload/v1745226610/samples/man-on-a-escalator.jpg",
-  },
-  {
-    word: "SEOUL",
-    activeKey: "seoul",
-    srcPosition: 4,
-    src: "https://res.cloudinary.com/dumqfde1s/image/upload/v1745226611/samples/dessert-on-a-plate.jpg",
-  },
-  {
-    word: "HERE",
-    activeKey: "here",
-    srcPosition: 1,
-    src: "https://res.cloudinary.com/dumqfde1s/image/upload/v1745226610/samples/chair-and-coffee-table.jpg",
-  },
-];
 
 const styleMap = {
   word: "inline-block max-md:text-[50px]",
