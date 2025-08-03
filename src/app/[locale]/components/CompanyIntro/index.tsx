@@ -103,9 +103,8 @@ function CompanyIntro() {
           muted
           playsInline
           preload="auto"
-        >
-          <source src={isMobile ? videoMobile : videoWeb} type="video/mp4" />
-        </video>
+          src={isMobile ? videoMobile : videoWeb}
+        />
       ))}
       <div
         className={cn(
