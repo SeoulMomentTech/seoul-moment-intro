@@ -1,11 +1,11 @@
 "use client";
 
-import Image from "next/image";
 import { useCallback, useId, useRef, useState } from "react";
 import { EffectFade, Autoplay } from "swiper/modules";
 import type { SwiperRef } from "swiper/react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Section from "@/components/ui/section";
+import useMediaQuery from "@/hooks/useMediaQuery";
 import { cn } from "@/utils/style";
 import Card from "./Card";
 import Pagination from "./Pagination";
@@ -24,6 +24,10 @@ const info = [
     description2:
       "현대 아름다움은 결국 자유로운 자신의 모습입니다.서울은 과하지 않고, 자연스러움속에서 감각적인 자신의 모습을 표현하는것에 중점을 둡니다.",
     img: "https://res.cloudinary.com/dumqfde1s/image/upload/v1745226610/samples/look-up.jpg",
+    videoWeb:
+      "https://res.cloudinary.com/dumqfde1s/video/upload/v1754223651/korea_web_kshxak.mp4",
+    videoMobile:
+      "https://res.cloudinary.com/dumqfde1s/video/upload/v1754223637/korea_mb_u0yinb.mp4",
   },
   {
     title1: "Seoul x Taiwan: A Shared Rhythm",
@@ -33,6 +37,10 @@ const info = [
     description2:
       "말하지 않아도, 감각은 통하니까요. 서울과 타이완, 공감으로 이어집니다.",
     img: "https://res.cloudinary.com/dumqfde1s/image/upload/v1745226609/samples/balloons.jpg",
+    videoWeb:
+      "https://res.cloudinary.com/dumqfde1s/video/upload/v1754223697/taiwan_web_ge8q0h.mp4",
+    videoMobile:
+      "https://res.cloudinary.com/dumqfde1s/video/upload/v1754223678/taiwan_mb_leu0yk.mp4",
   },
   {
     title1: "Who We Are",
@@ -42,6 +50,10 @@ const info = [
     description2:
       "서울모먼트는 하나의 감각을 완성하기 위해, 각자의 포지션에서 유연하게 움직이는 팀입니다. 경영팀은 방향을 설계하고, 물류팀은 흐름을 이어가며, 개발팀은 그 모든 연결을 가능하게 합니다. 우리는 함께, 브랜드를 넘어 새로운 감각의 경험을 만들어갑니다.",
     img: "https://res.cloudinary.com/dumqfde1s/image/upload/v1745226602/samples/landscapes/girl-urban-view.jpg",
+    videoWeb:
+      "https://res.cloudinary.com/dumqfde1s/video/upload/v1754223625/intro_gnid8x.mp4",
+    videoMobile:
+      "https://res.cloudinary.com/dumqfde1s/video/upload/v1754223625/intro_gnid8x.mp4",
   },
 ];
 
@@ -50,6 +62,7 @@ function CompanyIntro() {
   const swiperRef = useRef<SwiperRef | null>(null);
   const [activeIdx, setActiveIdx] = useState(0);
   const [progress, setProgress] = useState(0);
+  const isMobile = useMediaQuery("(max-width: 48rem)", false);
 
   const handleNext = () => {
     if (!swiperRef.current) return;
@@ -78,19 +91,19 @@ function CompanyIntro() {
         "h-[1080px] max-md:h-full",
       )}
     >
-      {info.map(({ img }, idx) => (
-        <Image
-          alt=""
+      {info.map(({ img, videoWeb, videoMobile }, idx) => (
+        <video
+          autoPlay
           className={cn(
-            "scale-90 object-cover opacity-0 transition-all duration-500",
+            "absolute h-full w-full scale-90 object-cover opacity-0 transition-all duration-500",
             idx === activeIdx && "scale-100 opacity-45",
           )}
-          fill
           key={`${id}-${img}-company-intro`}
-          src={img}
+          loop
+          muted
+          src={isMobile ? videoMobile : videoWeb}
         />
       ))}
-
       <div
         className={cn(
           "relative",
