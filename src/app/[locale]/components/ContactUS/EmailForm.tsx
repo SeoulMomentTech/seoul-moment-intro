@@ -171,7 +171,7 @@ export default function EmailForm() {
                   })}
                 />
                 <Button
-                  className="max-md:leading-[16px]"
+                  className="whitespace-pre max-md:leading-[16px]"
                   disabled={isCodeSent}
                   onClick={handleClickVerify}
                 >
@@ -203,7 +203,7 @@ export default function EmailForm() {
                       })}
                     />
                     <Button
-                      className="max-md:leading-[16px]"
+                      className="whitespace-pre max-md:leading-[16px]"
                       disabled={!formValues.code}
                       onClick={handleCheckCode}
                     >
