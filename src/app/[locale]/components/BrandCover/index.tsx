@@ -13,6 +13,14 @@ interface Props {
   className?: string;
 }
 
+export const images = [
+  "https://res.cloudinary.com/dumqfde1s/image/upload/v1753543300/feeling1_lrmexf.png",
+  "https://res.cloudinary.com/dumqfde1s/image/upload/v1753541821/feeling4_j6gfek.png",
+  "https://res.cloudinary.com/dumqfde1s/image/upload/v1753541821/feeling2_tss05c.png",
+  "https://res.cloudinary.com/dumqfde1s/image/upload/v1754316561/517410429_18514484098060627_785745689500304738_n_1_inkmnw.jpg",
+  "https://res.cloudinary.com/dumqfde1s/image/upload/v1754301498/KakaoTalk_20250526_155222900_20_yuwspq.jpg",
+];
+
 export default function BrandCover({ className }: Props) {
   return (
     <Section

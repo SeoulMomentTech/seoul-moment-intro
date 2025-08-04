@@ -13,7 +13,7 @@ const info = [
     description:
       "한국의 트렌디한 패션, 뷰티, 라이프 스타일을 경험하고, 브랜드 스토리를 효과적이고 빠르게 전달 할 수 있는 글로벌 감성 플랫폼.",
     images: [
-      "https://res.cloudinary.com/dumqfde1s/image/upload/v1753541296/belief1_shppz1.png",
+      "https://res.cloudinary.com/dumqfde1s/image/upload/v1754316746/junko-nakase-Q-72wa9-7Dg-unsplash_2_ksgnvu.jpg",
       "https://res.cloudinary.com/dumqfde1s/image/upload/v1753541286/belief2_ykbaxc.png",
       "https://res.cloudinary.com/dumqfde1s/image/upload/v1753541320/belief3_c3n1bi.png",
     ],

@@ -70,7 +70,7 @@ const info = [
     videoWeb:
       "https://res.cloudinary.com/dumqfde1s/video/upload/v1754223625/intro_gnid8x.mp4",
     videoMobile:
-      "https://res.cloudinary.com/dumqfde1s/video/upload/v1754223625/intro_gnid8x.mp4",
+      "https://res.cloudinary.com/dumqfde1s/video/upload/v1754290659/%EB%AA%A8%EB%B0%94%EC%9D%BC_%EC%88%8F%EB%8F%99%EC%98%81%EC%83%81_fv9jdh.mp4",
   },
 ];
 

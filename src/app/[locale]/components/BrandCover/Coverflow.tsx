@@ -5,6 +5,7 @@ import type { SwiperRef } from "swiper/react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import { cn } from "@/utils/style";
+import { images } from ".";
 
 import "swiper/css";
 import "swiper/css/effect-coverflow";
@@ -12,14 +13,6 @@ import "swiper/css/effect-coverflow";
 interface CoverflowProps {
   className?: string;
 }
-
-const images = [
-  "https://res.cloudinary.com/dumqfde1s/image/upload/v1753543300/feeling1_lrmexf.png",
-  "https://res.cloudinary.com/dumqfde1s/image/upload/v1753541821/feeling4_j6gfek.png",
-  "https://res.cloudinary.com/dumqfde1s/image/upload/v1753541821/feeling2_tss05c.png",
-  "https://res.cloudinary.com/dumqfde1s/image/upload/v1753542066/feeling5_sbs6kq.png",
-  "https://res.cloudinary.com/dumqfde1s/image/upload/v1753541963/feeling3_n4ushn.png",
-];
 
 export default function Coverflow({ className }: CoverflowProps) {
   const swiperRef = useRef<SwiperRef | null>(null);
