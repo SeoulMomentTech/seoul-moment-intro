@@ -25,7 +25,7 @@ export const metadata = {
       "Discover the essence of Seoul lifestyle and trend-forward products, delivered straight to Taiwan.",
     images: [
       {
-        url: "/og-image.png",
+        url: "https://seoul-moment.netlify.app/og-image.png",
         width: 1200,
         height: 630,
         alt: "Seoul Moment OG Image",
