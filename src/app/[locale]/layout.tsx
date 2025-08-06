@@ -23,6 +23,14 @@ export const metadata = {
     title: "Seoul Moment｜Seoul Style Meets Taiwan Rhythm",
     description:
       "Discover the essence of Seoul lifestyle and trend-forward products, delivered straight to Taiwan.",
+    images: [
+      {
+        url: "https://seoul-moment.netlify.app/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Seoul Moment OG Image",
+      },
+    ],
   },
 };
 
