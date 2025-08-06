@@ -51,7 +51,7 @@ export default function ContactUS() {
                 "max-md:flex-col-reverse max-md:items-center max-md:gap-[30px]",
               )}
             >
-              <div className={cn("flex gap-[20px]", "max-md:flex-col")}>
+              <div className={cn("flex", "max-md:flex-col max-md:gap-[20px]")}>
                 {[0, 1].map((_, idx) => (
                   <Image
                     alt=""
