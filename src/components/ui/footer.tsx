@@ -1,10 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import LanguageSupport from "@/app/[locale]/components/LanguageSupport";
 import Divider from "@/app/[locale]/components/ui/divider";
 import { cn } from "@/utils/style";
 
 export default function Footer() {
+  const t = useTranslations();
+
   return (
     <footer
       className={cn(
@@ -27,21 +30,21 @@ export default function Footer() {
         >
           <div className="flex flex-col text-black/80 max-md:gap-[10px]">
             <div className="flex items-center max-md:flex-col max-md:items-start max-md:gap-[10px]">
-              <span>首爾映像有限公司 （Seoul Moment Co., Ltd.）</span>
+              <span>{t("footer-info1")}</span>
               <Divider className="mx-[10px] max-md:hidden" />{" "}
-              <span>統一編號: 00148871</span>
+              <span>{t("footer-info2")}</span>
             </div>
             <div className="flex items-center max-md:flex-col max-md:items-start max-md:gap-[10px]">
-              <span>負責人: 朴佑濬</span>{" "}
+              <span>{t("footer-info3")}</span>{" "}
               <Divider className="mx-[10px] max-md:hidden" />{" "}
-              <span>地址: 台北市大安區忠孝東路四段231號10樓之2</span>
+              <span>{t("footer-info4")}</span>
             </div>
             <div className="flex items-center max-md:flex-col max-md:items-start max-md:gap-[10px]">
-              <span>Email : seoulmomentkr@gmail.com</span>{" "}
+              <span>{t("footer-info5")}</span>{" "}
               <Divider className="mx-[10px] max-md:hidden" />
               <div className="flex items-center">
-                kakao : seoulmoment <Divider className="mx-[10px]" />{" "}
-                <span className="font-semibold">글로벌 B2B 문의</span>
+                {t("footer-info6")} <Divider className="mx-[10px]" />{" "}
+                <span className="font-semibold">{t("footer-info7")}</span>
               </div>
             </div>
           </div>

@@ -13,13 +13,13 @@ export const CONTENTS = [
     word: "MAKE",
     activeKey: "make",
     srcPosition: 1,
-    src: "https://res.cloudinary.com/dumqfde1s/image/upload/v1754315800/8_Cute_and_Trendy_Outfits_for_Cold_Weather_nqugkh.jpg",
+    src: "https://res.cloudinary.com/dumqfde1s/image/upload/v1754664082/make_hnuar9.webp",
   },
   {
     word: "YOUR",
     activeKey: "your",
     srcPosition: 1,
-    src: "https://res.cloudinary.com/dumqfde1s/image/upload/v1754290691/singsing-wade-kim-on0JT_t3COI-unsplash_mls9xk.jpg",
+    src: "https://res.cloudinary.com/dumqfde1s/image/upload/v1754664081/your_tjirzf.webp",
   },
   {
     word: "SEOUL",
