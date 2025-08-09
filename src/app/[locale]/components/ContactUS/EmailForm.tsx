@@ -9,6 +9,7 @@ import Trans from "@/components/Trans";
 import Button from "@/components/ui/button";
 import Divider from "@/components/ui/divider";
 import {
+  postEmail,
   postEmailCode,
   verifyEmailCode,
   verifyRecaptcha,
@@ -23,6 +24,7 @@ interface EmailInputs {
   message: string;
   code: string;
   isVerified: boolean;
+  subject: string;
 }
 
 const RECAPTCHA_SITE_KEY = "6LftGZIrAAAAAKwcHWIlep_I8IOvfxW2XsIG0AwM";
@@ -44,6 +46,7 @@ export default function EmailForm() {
       code: "",
       isVerified: false,
       name: "",
+      subject: "",
     },
   });
   const formValues = watch();
@@ -65,11 +68,17 @@ export default function EmailForm() {
     }
 
     try {
-      console.log(recaptchaToken, data);
       // Do whatever you want with the token
       await verifyRecaptcha(recaptchaToken);
 
-      //const {email,message, name} = data;
+      const { message, name, subject } = data;
+
+      await postEmail({
+        to: "seoulmomenttw@gmail.com",
+        html: message,
+        name,
+        subject,
+      });
 
       setModalOpen({
         type: "success",
@@ -254,6 +263,26 @@ export default function EmailForm() {
               </>
             )}
             <div className="flex flex-col gap-[8px]">
+              <input
+                className={cn(
+                  "flex-1 rounded-[4px] border border-black/20 px-[12px] py-[16px]",
+                  "text-[16px] leading-[16px]",
+                  "placeholder:text-black/20",
+                )}
+                placeholder="Email subject"
+                {...register("subject", {
+                  required: "Please enter the subject.",
+                  minLength: {
+                    value: 10,
+                    message: "The subject must be at least 10 characters.",
+                  },
+                })}
+              />
+              {errors.subject && (
+                <span className="text-error">{errors.subject.message}</span>
+              )}
+            </div>
+            <div className="flex flex-col gap-[8px]">
               <textarea
                 className={cn(
                   "h-[100px] rounded-[4px] border border-black/20 px-[12px] py-[16px]",
@@ -314,6 +343,7 @@ export default function EmailForm() {
           onClickOK={() => {
             handleOpen("success")(false);
             reset();
+            setIsCodeSent(false);
           }}
           onOpenChange={handleOpen("success")}
           open={modalOpen?.open}
