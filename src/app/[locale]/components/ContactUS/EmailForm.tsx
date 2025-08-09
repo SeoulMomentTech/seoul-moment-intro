@@ -216,7 +216,7 @@ export default function EmailForm() {
                   disabled={isCodeSent}
                   onClick={handleClickVerify}
                 >
-                  인증
+                  <Trans id="verify" />
                 </Button>
               </div>
               {errors.email && (
@@ -248,7 +248,9 @@ export default function EmailForm() {
                       disabled={!formValues.code || formValues.isVerified}
                       onClick={handleCheckCode}
                     >
-                      {formValues.isVerified ? "인증 완료" : "확인"}
+                      <Trans
+                        id={formValues.isVerified ? "verified" : "confirm"}
+                      />
                     </Button>
                   </div>
                   {errors.code && (
