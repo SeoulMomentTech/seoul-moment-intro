@@ -3,14 +3,14 @@
 import { ChevronDown } from "lucide-react";
 import Link from "next/link";
 import { useLocale } from "next-intl";
-import { cn } from "@/utils/style";
 import {
   DropdownMenu,
   DropdownMenuTrigger,
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
-} from "./ui/dropdown-menu";
+} from "@/components/ui/dropdown-menu";
+import { cn } from "@/utils/style";
 
 type LanguageCode = keyof typeof locales;
 

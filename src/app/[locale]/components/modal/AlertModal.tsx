@@ -1,6 +1,6 @@
 import type { PropsWithChildren } from "react";
-import Button from "../ui/button";
-import { Dialog, DialogContent, DialogTitle } from "../ui/dialog";
+import Button from "@/components/ui/button";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 
 interface AlertModalProps extends PropsWithChildren {
   open?: boolean;

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { useId } from "react";
+import Trans from "@/components/Trans";
 import { cn } from "@/utils/style";
 
 interface InfoBoxProps {
@@ -29,13 +30,19 @@ export default function InfoBox({
     >
       <div className="flex flex-col gap-[20px] max-sm:gap-[30px]">
         <h2 className="text-[40px] max-lg:text-[36px] max-sm:h-[54px] max-sm:text-[20px]">
-          <b>{title}</b>
+          <b>
+            <Trans id={title} />
+          </b>
         </h2>
         <div className="flex flex-col gap-[10px]">
           <h4>
-            <b>{subTitle}</b>
+            <b>
+              <Trans id={subTitle} />
+            </b>
           </h4>
-          <p className="max-sm:h-[54px] max-sm:text-[14px]">{description}</p>
+          <p className="max-sm:h-[54px] max-sm:text-[14px]">
+            <Trans id={description} />
+          </p>
         </div>
       </div>
 

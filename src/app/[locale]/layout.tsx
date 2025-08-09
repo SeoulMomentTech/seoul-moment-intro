@@ -20,7 +20,7 @@ export const metadata = {
     canonical: "https://seoulmoment.com.tw",
   },
   openGraph: {
-    title: "Seoul Moment｜Seoul Style Meets Taiwan Rhythm",
+    title: "Seoul Moment | Your Style, Your Moment",
     description:
       "Discover the essence of Seoul lifestyle and trend-forward products, delivered straight to Taiwan.",
     images: [

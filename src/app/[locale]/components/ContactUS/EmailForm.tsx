@@ -5,11 +5,17 @@ import { useRef, useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import type { SubmitHandler } from "react-hook-form";
 import { useForm } from "react-hook-form";
+import Trans from "@/components/Trans";
+import Button from "@/components/ui/button";
+import Divider from "@/components/ui/divider";
+import {
+  postEmailCode,
+  verifyEmailCode,
+  verifyRecaptcha,
+} from "@/services/auth";
 import type { ModalStatus } from "@/types";
 import { cn } from "@/utils/style";
 import AlertModal from "../modal/AlertModal";
-import Button from "../ui/button";
-import Divider from "../ui/divider";
 
 interface EmailInputs {
   name: string;
@@ -29,6 +35,7 @@ export default function EmailForm() {
     trigger,
     reset,
     setValue,
+    setError,
     formState: { errors },
   } = useForm<EmailInputs>({
     defaultValues: {
@@ -60,6 +67,10 @@ export default function EmailForm() {
     try {
       console.log(recaptchaToken, data);
       // Do whatever you want with the token
+      await verifyRecaptcha(recaptchaToken);
+
+      //const {email,message, name} = data;
+
       setModalOpen({
         type: "success",
         open: true,
@@ -73,17 +84,35 @@ export default function EmailForm() {
   };
 
   const handleClickVerify = async () => {
-    const isValid = await trigger("email");
+    const email = formValues.email;
 
-    if (!isValid) {
-      return;
+    try {
+      const isValid = await trigger("email");
+
+      if (!isValid) {
+        return;
+      }
+
+      await postEmailCode(email);
+      setIsCodeSent(true);
+    } catch {
+      setIsCodeSent(false);
     }
-
-    setIsCodeSent(true);
   };
 
-  const handleCheckCode = () => {
-    setValue("isVerified", true);
+  const handleCheckCode = async () => {
+    const { email, code } = formValues;
+
+    if (!code || !email) return;
+
+    try {
+      await verifyEmailCode({ email, code });
+      setValue("isVerified", true);
+    } catch {
+      setError("code", {
+        message: "Code is incorrect, Please check again.",
+      });
+    }
   };
 
   const handleOpen = (type: string) => (open: boolean) => {
@@ -112,9 +141,9 @@ export default function EmailForm() {
             Contact Us
           </h4>
           <span className={cn("text-[14px] text-black/40")}>
-            서울모먼트는 감각적인 연결을 만들어갑니다.{" "}
-            <br className="hidden max-md:inline" /> 당신의 이야기를 기다리고
-            있습니다.
+            <Trans id="email-subtitle1" />{" "}
+            <br className="hidden max-md:inline" />
+            <Trans id="email-subtitle2" />
           </span>
         </div>
         <div
@@ -126,15 +155,18 @@ export default function EmailForm() {
           )}
         >
           <span className="text-center text-black/60">
-            ✉ 고객 응대 및 피드백
+            ✉ 
+            <Trans id="email-span1" />
           </span>
           <Divider className="max-md:hidden" />
           <span className="text-center text-black/60">
-            🤝  브랜드 제휴·유통 협력 (한/대만)
+            🤝 
+            <Trans id="email-span2" />
           </span>
           <Divider className="max-md:hidden" />
           <span className="text-center text-black/60">
-            🎥  인플루언서 및 콘텐츠 파트너 제안
+            🎥  
+            <Trans id="email-span3" />
           </span>
         </div>
         <div className={cn("flex flex-col gap-[40px]")}>
@@ -204,18 +236,21 @@ export default function EmailForm() {
                     />
                     <Button
                       className="whitespace-pre max-md:leading-[16px]"
-                      disabled={!formValues.code}
+                      disabled={!formValues.code || formValues.isVerified}
                       onClick={handleCheckCode}
                     >
-                      확인
+                      {formValues.isVerified ? "인증 완료" : "확인"}
                     </Button>
                   </div>
+                  {errors.code && (
+                    <span className="text-error">{errors.code.message}</span>
+                  )}
+                  {formValues.isVerified && (
+                    <span className="text-sent">
+                      Email verified successfully.
+                    </span>
+                  )}
                 </div>
-                {formValues.isVerified && (
-                  <span className="text-sent">
-                    Email verified successfully.
-                  </span>
-                )}
               </>
             )}
             <div className="flex flex-col gap-[8px]">

@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import LanguageSupport from "@/app/[locale]/components/LanguageSupport";
-import Divider from "@/app/[locale]/components/ui/divider";
+import Divider from "@/components/ui/divider";
 import { cn } from "@/utils/style";
 
 export default function Footer() {
@@ -40,12 +40,11 @@ export default function Footer() {
               <span>{t("footer-info4")}</span>
             </div>
             <div className="flex items-center max-md:flex-col max-md:items-start max-md:gap-[10px]">
+              <span className="font-semibold">{t("footer-info7")}</span>
+              <Divider className="mx-[10px] max-md:hidden" />
               <span>{t("footer-info5")}</span>{" "}
               <Divider className="mx-[10px] max-md:hidden" />
-              <div className="flex items-center">
-                {t("footer-info6")} <Divider className="mx-[10px]" />{" "}
-                <span className="font-semibold">{t("footer-info7")}</span>
-              </div>
+              <div className="flex items-center">{t("footer-info6")}</div>
             </div>
           </div>
           <div className="text-black/60 max-md:mt-[20px]">
