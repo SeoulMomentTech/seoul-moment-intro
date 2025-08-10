@@ -1,41 +1,57 @@
 {
-  "verify": "Verify",
-  "verified": "Verified",
-  "confirm": "Confirm",
-
-  "info1-description": "Where data meets trends.",
-  "info1-description-line1": "Seoul’s trends emerge from the flow of the city, refined into sophisticated sensibilities.",
-  "info1-description-line2": "The air of the streets, the gaze of the people, and the atmosphere of the moment weave together into a new current. We read these changes and refine them with precision through data. Seoul Moment delivers these brand stories to Taiwan with authenticity and vibrancy. We walk alongside this flow, sharing the sensibilities of the moment.",
-  "info2-description": "Different cities, the same rhythm.",
-  "info2-description-line1": "The sensibility of Seoul blends seamlessly with the flow of Taiwan.",
-  "info2-description-line2": "When culture and style meet, they merge into each other’s rhythm, softening boundaries and sparking new inspiration. Seoul Moment goes beyond mere connection, we create a harmonious resonance.",
-  "info3-description": "People who share sensibility.",
-  "info3-description-line1": "Seoul Moment operates on expertise in creation, planning, technology, and connection.",
-  "info3-description-line2": "We design market visions through data, optimize quality and operational flows with precision, and integrate every experience into a cohesive story. Our singular goal to transform Korea’s trend-setting style into a new cultural movement as a global platform.",
-
-  "scroll-info-title1": "Beyond Style: Our Belief",
-  "scroll-info-subtitle1": "Style is the beginning, meaning is the heart.",
-  "scroll-info-description1": "We decode Seoul’s mood through data, turning it into a platform where everyday life meets design. Seoul Moment is not just what you see. “it is what you feel, choose, and co-create”.",
-
-  "scroll-info-title2": "Discover Style & Meaning",
-  "scroll-info-subtitle2": "Expand your everyday, redefine your style.",
-  "scroll-info-description2": "We offer more than products. In every moment of daily life, our trend curation platform completes your unique style and story.",
-
-  "scroll-info-title3": "Experience Seoul, Daily",
-  "scroll-info-subtitle3": "From Seoul to your side.",
-  "scroll-info-description3": "“Every day, we bring Korean brands closer and more vividly to you.” From Seoul to stores across Taiwan, what we deliver is not just a visual experience — it’s something you can truly feel and share.",
-
-  "email-subtitle1": "Seoul Moment creates connections that inspire the senses.",
-  "email-subtitle2": "We look forward to your story.",
-  "email-span1": "Customer service & feedback",
-  "email-span2": "Brand partnerships & distribution (KR/TW)",
-  "email-span3": "Influencer & content collaboration proposals",
-
-  "footer-info1": "Seoul Moment Co., Ltd. (首爾映像有限公司)",
-  "footer-info2": "Business Number: 00148871",
-  "footer-info3": "CEO: Park Woojun",
-  "footer-info4": "Address: 10F.-2, No. 231, Sec. 4, Zhongxiao E. Rd., Daan Dist., Taipei City 106, Taiwan (R.O.C.)",
-  "footer-info5": "Email: seoulmomentkr@gmail.com",
-  "footer-info6": "Kakao & Line：seoulmoment",
-  "footer-info7": "Global B2B Inquiries"
+  "common": {
+    "verify": "Verify",
+    "verified": "Verified",
+    "confirm": "Confirm"
+  },
+  "info": {
+    "1": {
+      "description": "Where data meets trends.",
+      "line1": "Seoul’s trends emerge from the flow of the city, refined into sophisticated sensibilities.",
+      "line2": "The air of the streets, the gaze of the people, and the atmosphere of the moment weave together into a new current. We read these changes and refine them with precision through data. Seoul Moment delivers these brand stories to Taiwan with authenticity and vibrancy. We walk alongside this flow, sharing the sensibilities of the moment."
+    },
+    "2": {
+      "description": "Different cities, the same rhythm.",
+      "line1": "The sensibility of Seoul blends seamlessly with the flow of Taiwan.",
+      "line2": "When culture and style meet, they merge into each other’s rhythm, softening boundaries and sparking new inspiration. Seoul Moment goes beyond mere connection, we create a harmonious resonance."
+    },
+    "3": {
+      "description": "People who share sensibility.",
+      "line1": "Seoul Moment operates on expertise in creation, planning, technology, and connection.",
+      "line2": "We design market visions through data, optimize quality and operational flows with precision, and integrate every experience into a cohesive story. Our singular goal to transform Korea’s trend-setting style into a new cultural movement as a global platform."
+    }
+  },
+  "scrollInfo": {
+    "1": {
+      "title": "Beyond Style: Our Belief",
+      "subtitle": "Style is the beginning, meaning is the heart.",
+      "description": "We decode Seoul’s mood through data, turning it into a platform where everyday life meets design. Seoul Moment is not just what you see. “it is what you feel, choose, and co-create”."
+    },
+    "2": {
+      "title": "Discover Style & Meaning",
+      "subtitle": "Expand your everyday, redefine your style.",
+      "description": "We offer more than products. In every moment of daily life, our trend curation platform completes your unique style and story."
+    },
+    "3": {
+      "title": "Experience Seoul, Daily",
+      "subtitle": "From Seoul to your side.",
+      "description": "“Every day, we bring Korean brands closer and more vividly to you.” From Seoul to stores across Taiwan, what we deliver is not just a visual experience — it’s something you can truly feel and share."
+    }
+  },
+  "email": {
+    "subtitle1": "Seoul Moment creates connections that inspire the senses.",
+    "subtitle2": "We look forward to your story.",
+    "span1": "Customer service & feedback",
+    "span2": "Brand partnerships & distribution (KR/TW)",
+    "span3": "Influencer & content collaboration proposals"
+  },
+  "footer": {
+    "info1": "Seoul Moment Co., Ltd. (首爾映像有限公司)",
+    "info2": "Business Number: 00148871",
+    "info3": "CEO: Park Woojun",
+    "info4": "Address: 10F.-2, No. 231, Sec. 4, Zhongxiao E. Rd., Daan Dist., Taipei City 106, Taiwan (R.O.C.)",
+    "info5": "Email: seoulmomentkr@gmail.com",
+    "info6": "Kakao & Line：seoulmoment",
+    "info7": "Global B2B Inquiries"
+  }
 }

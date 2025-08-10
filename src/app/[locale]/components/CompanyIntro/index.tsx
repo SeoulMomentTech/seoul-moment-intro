@@ -21,16 +21,16 @@ import "swiper/css/pagination";
 const info = [
   {
     title1: "The Essence of Seoul",
-    description1: "info1-description",
+    description1: "info.1.description",
     title2: "Your style, told the Seoul way.",
     subTitle2: "",
     description2: (
       <>
         &quot;
-        <Trans id="info1-description-line1" />
+        <Trans id="info.1.line1" />
         &quot;
         <br />
-        <Trans id="info1-description-line2" />
+        <Trans id="info.1.line2" />
       </>
     ),
     videoWeb:
@@ -40,16 +40,16 @@ const info = [
   },
   {
     title1: "Seoul x Taiwan: A Shared Rhythm",
-    description1: "info2-description",
+    description1: "info.2.description",
     title2: "Different tones, same rhythm.",
     subTitle2: "",
     description2: (
       <>
         &quot;
-        <Trans id="info2-description-line1" />
+        <Trans id="info.2.line1" />
         &quot;
         <br />
-        <Trans id="info2-description-line2" />
+        <Trans id="info.2.line2" />
       </>
     ),
     videoWeb:
@@ -59,16 +59,16 @@ const info = [
   },
   {
     title1: "Who We Are",
-    description1: "info3-description",
+    description1: "info.3.description",
     title2: "Inside Seoul Moment",
     subTitle2: "",
     description2: (
       <>
         &quot;
-        <Trans id="info3-description-line1" />
+        <Trans id="info.3.line1" />
         &quot;
         <br />
-        <Trans id="info3-description-line2" />
+        <Trans id="info.3.line2" />
       </>
     ),
     videoWeb:

@@ -150,9 +150,9 @@ export default function EmailForm() {
             Contact Us
           </h4>
           <span className={cn("text-[14px] text-black/40")}>
-            <Trans id="email-subtitle1" />{" "}
+            <Trans id="subtitle1" ns="email" />{" "}
             <br className="hidden max-md:inline" />
-            <Trans id="email-subtitle2" />
+            <Trans id="subtitle2" ns="email" />
           </span>
         </div>
         <div
@@ -165,17 +165,17 @@ export default function EmailForm() {
         >
           <span className="text-center text-black/60">
             ✉ 
-            <Trans id="email-span1" />
+            <Trans id="span1" ns="email" />
           </span>
           <Divider className="max-md:hidden" />
           <span className="text-center text-black/60">
             🤝 
-            <Trans id="email-span2" />
+            <Trans id="span2" ns="email" />
           </span>
           <Divider className="max-md:hidden" />
           <span className="text-center text-black/60">
             🎥  
-            <Trans id="email-span3" />
+            <Trans id="span3" ns="email" />
           </span>
         </div>
         <div className={cn("flex flex-col gap-[40px]")}>
@@ -216,7 +216,7 @@ export default function EmailForm() {
                   disabled={isCodeSent}
                   onClick={handleClickVerify}
                 >
-                  <Trans id="verify" />
+                  <Trans id="verify" ns="common" />
                 </Button>
               </div>
               {errors.email && (
@@ -250,6 +250,7 @@ export default function EmailForm() {
                     >
                       <Trans
                         id={formValues.isVerified ? "verified" : "confirm"}
+                        ns="common"
                       />
                     </Button>
                   </div>

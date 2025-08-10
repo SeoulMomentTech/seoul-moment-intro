@@ -1,41 +1,57 @@
 {
-  "verify": "驗證",
-  "verified": "認證完成",
-  "confirm": "確認",
-
-  "info1-description": "數據與直覺的交會點",
-  "info1-description-line1": "數據與直覺交織的節奏，孕育出首爾獨有的潮流脈動。",
-  "info1-description-line2": "它在城市的步調中綻放，透過空氣的氣息、人群的神情、當下的氛圍，匯聚成全新的流向。我們洞察這份變化，並以數據精準雕琢，使其更臻細膩。由此誕生的韓國品牌故事，Seoul Moment 以最真摯、最鮮活的方式帶到台灣，與你一同感受、並走進這股流動。",
-  "info2-description": "不同的城市，同樣的脈動",
-  "info2-description-line1": "首爾的感官，輕柔地融入台灣的流動",
-  "info2-description-line2": "當文化與風格相遇，彼此的節奏開始共鳴界線漸淡，新的感覺悄然綻放Seoul Moment 不只是連結，更是一種和諧的共鳴",
-  "info3-description": "分享感覺",
-  "info3-description-line1": "我們是創造、策劃與連結的人。",
-  "info3-description-line2": "有人描繪願景，有人守護品質與節奏，也有人將每個瞬間串聯成完整的故事。我們各自在崗位上前行，但最終朝著同一個方向邁進。Seoul Moment 超越品牌，創造讓風格成為文化的時刻。",
-
-  "scroll-info-title1": "Beyond Style: Our Belief",
-  "scroll-info-subtitle1": "風格是起點，意義才是核心。",
-  "scroll-info-description1": "我們以數據解讀首爾的氛圍，將這份感受化為日常與設計相遇的平台。 Seoul Moment 不只是你眼中所見，更是融入生活、啟發靈感、並值得長久珍藏的故事。",
-
-  "scroll-info-title2": "Discover Style & Meaning",
-  "scroll-info-subtitle2": "拓展你的日常，重塑你的風格。",
-  "scroll-info-description2": "在生活的每一刻，我們的潮流精選平台，為你完成專屬的風格與故事。",
-
-  "scroll-info-title3": "Experience Seoul, Daily",
-  "scroll-info-subtitle3": "從首爾，到你身邊。",
-  "scroll-info-description3": "「每天，讓韓國品牌更貼近、更鮮活地呈現在你眼前。」 從首爾到遍布台灣的門市，我們傳遞的不僅是視覺體驗，更是能真切感受並共同分享的時刻。",
-
-  "email-subtitle1": "首爾映像，為您打造感官上的連結，",
-  "email-subtitle2": "靜候您的故事啟程。",
-  "email-span1": "客戶服務與回饋",
-  "email-span2": "品牌合作與通路夥伴（韓國／台灣）",
-  "email-span3": "KOL 與內容創作合作提案",
-
-  "footer-info1": "首爾映像有限公司（Seoul Moment Co., Ltd.）",
-  "footer-info2": "統一編號：00148871",
-  "footer-info3": "負責人：朴佑濬",
-  "footer-info4": "地址：台北市大安區忠孝東路四段231號10樓之2",
-  "footer-info5": "Email：seoulmomenttw@gmail.com",
-  "footer-info6": "Kakao & Line：seoulmoment",
-  "footer-info7": "全球 B2B 洽詢"
+  "common": {
+    "verify": "驗證",
+    "verified": "認證完成",
+    "confirm": "確認"
+  },
+  "info": {
+    "1": {
+      "description": "數據與直覺的交會點",
+      "line1": "數據與直覺交織的節奏，孕育出首爾獨有的潮流脈動。",
+      "line2": "它在城市的步調中綻放，透過空氣的氣息、人群的神情、當下的氛圍，匯聚成全新的流向。我們洞察這份變化，並以數據精準雕琢，使其更臻細膩。由此誕生的韓國品牌故事，Seoul Moment 以最真摯、最鮮活的方式帶到台灣，與你一同感受、並走進這股流動。"
+    },
+    "2": {
+      "description": "不同的城市，同樣的脈動",
+      "line1": "首爾的感官，輕柔地融入台灣的流動",
+      "line2": "當文化與風格相遇，彼此的節奏開始共鳴界線漸淡，新的感覺悄然綻放Seoul Moment 不只是連結，更是一種和諧的共鳴"
+    },
+    "3": {
+      "description": "分享感覺",
+      "line1": "我們是創造、策劃與連結的人。",
+      "line2": "有人描繪願景，有人守護品質與節奏，也有人將每個瞬間串聯成完整的故事。我們各自在崗位上前行，但最終朝著同一個方向邁進。Seoul Moment 超越品牌，創造讓風格成為文化的時刻。"
+    }
+  },
+  "scrollInfo": {
+    "1": {
+      "title": "Beyond Style: Our Belief",
+      "subtitle": "風格是起點，意義才是核心。",
+      "description": "我們以數據解讀首爾的氛圍，將這份感受化為日常與設計相遇的平台。 Seoul Moment 不只是你眼中所見，更是融入生活、啟發靈感、並值得長久珍藏的故事。"
+    },
+    "2": {
+      "title": "Discover Style & Meaning",
+      "subtitle": "拓展你的日常，重塑你的風格。",
+      "description": "在生活的每一刻，我們的潮流精選平台，為你完成專屬的風格與故事。"
+    },
+    "3": {
+      "title": "Experience Seoul, Daily",
+      "subtitle": "從首爾，到你身邊。",
+      "description": "「每天，讓韓國品牌更貼近、更鮮活地呈現在你眼前。」 從首爾到遍布台灣的門市，我們傳遞的不僅是視覺體驗，更是能真切感受並共同分享的時刻。"
+    }
+  },
+  "email": {
+    "subtitle1": "首爾映像，為您打造感官上的連結，",
+    "subtitle2": "靜候您的故事啟程。",
+    "span1": "客戶服務與回饋",
+    "span2": "品牌合作與通路夥伴（韓國／台灣）",
+    "span3": "KOL 與內容創作合作提案"
+  },
+  "footer": {
+    "info1": "首爾映像有限公司（Seoul Moment Co., Ltd.）",
+    "info2": "統一編號：00148871",
+    "info3": "負責人：朴佑濬",
+    "info4": "地址：台北市大安區忠孝東路四段231號10樓之2",
+    "info5": "Email：seoulmomenttw@gmail.com",
+    "info6": "Kakao & Line：seoulmoment",
+    "info7": "全球 B2B 洽詢"
+  }
 }

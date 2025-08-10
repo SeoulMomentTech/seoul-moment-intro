@@ -6,7 +6,7 @@ import Divider from "@/components/ui/divider";
 import { cn } from "@/utils/style";
 
 export default function Footer() {
-  const t = useTranslations();
+  const t = useTranslations("footer");
 
   return (
     <footer
@@ -30,21 +30,21 @@ export default function Footer() {
         >
           <div className="flex flex-col text-black/80 max-md:gap-[10px]">
             <div className="flex items-center max-md:flex-col max-md:items-start max-md:gap-[10px]">
-              <span>{t("footer-info1")}</span>
+              <span>{t("info1")}</span>
               <Divider className="mx-[10px] max-md:hidden" />{" "}
-              <span>{t("footer-info2")}</span>
+              <span>{t("info2")}</span>
             </div>
             <div className="flex items-center max-md:flex-col max-md:items-start max-md:gap-[10px]">
-              <span>{t("footer-info3")}</span>{" "}
+              <span>{t("info3")}</span>{" "}
               <Divider className="mx-[10px] max-md:hidden" />{" "}
-              <span>{t("footer-info4")}</span>
+              <span>{t("info4")}</span>
             </div>
             <div className="flex items-center max-md:flex-col max-md:items-start max-md:gap-[10px]">
-              <span className="font-semibold">{t("footer-info7")}</span>
+              <span className="font-semibold">{t("info7")}</span>
               <Divider className="mx-[10px] max-md:hidden" />
-              <span>{t("footer-info5")}</span>{" "}
+              <span>{t("info5")}</span>{" "}
               <Divider className="mx-[10px] max-md:hidden" />
-              <div className="flex items-center">{t("footer-info6")}</div>
+              <div className="flex items-center">{t("info6")}</div>
             </div>
           </div>
           <div className="text-black/60 max-md:mt-[20px]">

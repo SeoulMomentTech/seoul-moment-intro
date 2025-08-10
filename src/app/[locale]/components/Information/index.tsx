@@ -8,9 +8,9 @@ import SideBar from "./SideBar";
 
 const info = [
   {
-    title: "scroll-info-title1",
-    subTitle: "scroll-info-subtitle1",
-    description: "scroll-info-description1",
+    title: "scrollInfo.1.title",
+    subTitle: "scrollInfo.1.subtitle",
+    description: "scrollInfo.1.description",
     images: [
       "https://res.cloudinary.com/dumqfde1s/image/upload/v1754316746/junko-nakase-Q-72wa9-7Dg-unsplash_2_ksgnvu.jpg",
       "https://res.cloudinary.com/dumqfde1s/image/upload/v1753541286/belief2_ykbaxc.png",
@@ -19,9 +19,9 @@ const info = [
     linkId: "link1",
   },
   {
-    title: "scroll-info-title2",
-    subTitle: "scroll-info-subtitle2",
-    description: "scroll-info-description2",
+    title: "scrollInfo.2.title",
+    subTitle: "scrollInfo.2.subtitle",
+    description: "scrollInfo.2.description",
     images: [
       "https://res.cloudinary.com/dumqfde1s/image/upload/v1753541414/style1_bwkm5z.png",
       "https://res.cloudinary.com/dumqfde1s/image/upload/v1753541419/style2_nkbngi.png",
@@ -30,9 +30,9 @@ const info = [
     linkId: "link2",
   },
   {
-    title: "scroll-info-title3",
-    subTitle: "scroll-info-subtitle3",
-    description: "scroll-info-description3",
+    title: "scrollInfo.3.title",
+    subTitle: "scrollInfo.3.subtitle",
+    description: "scrollInfo.3.description",
     images: [
       "https://res.cloudinary.com/dumqfde1s/image/upload/v1753541506/seoul1_ajfr2g.png",
       "https://res.cloudinary.com/dumqfde1s/image/upload/v1753541508/seoul2_cbihvo.png",

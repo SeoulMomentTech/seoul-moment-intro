@@ -1,41 +1,57 @@
 {
-  "verify": "인증",
-  "verified": "인증 완료",
-  "confirm": "확인",
-
-  "info1-description": "데이터와 트렌드가 만나는 곳.",
-  "info1-description-line1": "서울의 트렌드는 도시의 흐름 속에서 피어나, 세련된 감각으로 완성됩니다.",
-  "info1-description-line2": "거리의 공기, 사람들의 시선, 그리고 순간의 분위기가 하나로 엮이며 새로운 흐름을 만듭니다.우리는 그 변화를 읽고, 데이터를 통해 더욱 정교하게 다듬습니다. 이렇게 탄생한 브랜드의 이야기를 서울모먼트는 대만에 가장 생생하고 진정성 있게 전합니다. 우리는 이 흐름을 함께 걸으며, 그 순간의 감각을 나눕니다.",
-  "info2-description": "다른 도시, 같은 리듬",
-  "info2-description-line1": "서울의 감각이 대만의 흐름과 자연스럽게 어우러집니다.",
-  "info2-description-line2": "문화와 스타일이 만나 서로의 리듬 속으로 스며드는 순간 경계는 옅어지고, 새로운 감각이 피어납니다.서울모먼트는 단순한 연결을 넘어, 조화로운 공명을 만들어갑니다.",
-  "info3-description": "감각을 설계하는 조직",
-  "info3-description-line1": "서울모먼트는 창작, 기획, 기술, 그리고 연결의 전문성을 기반으로 움직입니다.",
-  "info3-description-line2": "시장의 비전을 데이터로 설계하고, 품질과 운영 흐름을 정밀하게 최적화하며, 모든 경험을 하나의 일관된 스토리로 통합합니다. 우리는 하나의 목표인, 한국의 트렌디한 스타일을 새로운 문화로 전환하는 글로벌 플랫폼를 향해 나아갑니다.",
-
-  "scroll-info-title1": "Beyond Style: Our Belief",
-  "scroll-info-subtitle1": "More Than Style, Our Values, Our Stories",
-  "scroll-info-description1": "스타일은 시작일 뿐, 그 너머가 있습니다. 서울의 무드를 데이터로 분석하여, 모두의 일상을 감각적으로 이어주는 플랫폼, Seoul Moment입니다.",
-
-  "scroll-info-title2": "Discover Style & Meaning",
-  "scroll-info-subtitle2": "일상을 넓히고, 스타일을 새롭게.",
-  "scroll-info-description2": "일상의 순간마다, 나만의 스타일과 이야기를 완성하는 트렌드 셀렉션 플렛폼.",
-
-  "scroll-info-title3": "Experience Seoul, Daily",
-  "scroll-info-subtitle3": "서울에서, 당신의 곁으로.",
-  "scroll-info-description3": "“매일 한국 브랜드를 더 가깝고 생생하게 전합니다”, 서울에서부터 대만 전역의 매장까지, 우리가 전하는 건 단순히 ‘보는 경험’이 아니라, ‘함께 느끼는 경험’입니다.",
-
-  "email-subtitle1": "서울모먼트는 감각적인 연결을 만들어갑니다.",
-  "email-subtitle2": "당신의 이야기를 기다리고 있습니다.",
-  "email-span1": "고객 응대와 피드백",
-  "email-span2": "브랜드 협업·유통 파트너십 (한국/대만)",
-  "email-span3": "인플루언서·콘텐츠 제작 제안",
-
-  "footer-info1": "서울모먼트 (Seoul Moment Co., Ltd.)",
-  "footer-info2": "사업자등록번호: 00148871",
-  "footer-info3": "대표자: 박우준",
-  "footer-info4": "주소: 10F.-2, No. 231, Sec. 4, Zhongxiao E. Rd., Daan Dist., Taipei City 106, Taiwan (R.O.C.)",
-  "footer-info5": "이메일: seoulmomentkr@gmail.com",
-  "footer-info6": "Kakao & Line：seoulmoment",
-  "footer-info7": "글로벌 B2B 문의"
+  "common": {
+    "verify": "인증",
+    "verified": "인증 완료",
+    "confirm": "확인"
+  },
+  "info": {
+    "1": {
+      "description": "데이터와 트렌드가 만나는 곳.",
+      "line1": "서울의 트렌드는 도시의 흐름 속에서 피어나, 세련된 감각으로 완성됩니다.",
+      "line2": "거리의 공기, 사람들의 시선, 그리고 순간의 분위기가 하나로 엮이며 새로운 흐름을 만듭니다.우리는 그 변화를 읽고, 데이터를 통해 더욱 정교하게 다듬습니다. 이렇게 탄생한 브랜드의 이야기를 서울모먼트는 대만에 가장 생생하고 진정성 있게 전합니다. 우리는 이 흐름을 함께 걸으며, 그 순간의 감각을 나눕니다."
+    },
+    "2": {
+      "description": "다른 도시, 같은 리듬",
+      "line1": "서울의 감각이 대만의 흐름과 자연스럽게 어우러집니다.",
+      "line2": "문화와 스타일이 만나 서로의 리듬 속으로 스며드는 순간 경계는 옅어지고, 새로운 감각이 피어납니다.서울모먼트는 단순한 연결을 넘어, 조화로운 공명을 만들어갑니다."
+    },
+    "3": {
+      "description": "감각을 설계하는 조직",
+      "line1": "서울모먼트는 창작, 기획, 기술, 그리고 연결의 전문성을 기반으로 움직입니다.",
+      "line2": "시장의 비전을 데이터로 설계하고, 품질과 운영 흐름을 정밀하게 최적화하며, 모든 경험을 하나의 일관된 스토리로 통합합니다. 우리는 하나의 목표인, 한국의 트렌디한 스타일을 새로운 문화로 전환하는 글로벌 플랫폼를 향해 나아갑니다."
+    }
+  },
+  "scrollInfo": {
+    "1": {
+      "title": "Beyond Style: Our Belief",
+      "subtitle": "More Than Style, Our Values, Our Stories",
+      "description": "스타일은 시작일 뿐, 그 너머가 있습니다. 서울의 무드를 데이터로 분석하여, 모두의 일상을 감각적으로 이어주는 플랫폼, Seoul Moment입니다."
+    },
+    "2": {
+      "title": "Discover Style & Meaning",
+      "subtitle": "일상을 넓히고, 스타일을 새롭게.",
+      "description": "일상의 순간마다, 나만의 스타일과 이야기를 완성하는 트렌드 셀렉션 플렛폼."
+    },
+    "3": {
+      "title": "Experience Seoul, Daily",
+      "subtitle": "서울에서, 당신의 곁으로.",
+      "description": "“매일 한국 브랜드를 더 가깝고 생생하게 전합니다”, 서울에서부터 대만 전역의 매장까지, 우리가 전하는 건 단순히 ‘보는 경험’이 아니라, ‘함께 느끼는 경험’입니다."
+    }
+  },
+  "email": {
+    "subtitle1": "서울모먼트는 감각적인 연결을 만들어갑니다.",
+    "subtitle2": "당신의 이야기를 기다리고 있습니다.",
+    "span1": "고객 응대와 피드백",
+    "span2": "브랜드 협업·유통 파트너십 (한국/대만)",
+    "span3": "인플루언서·콘텐츠 제작 제안"
+  },
+  "footer": {
+    "info1": "서울모먼트 (Seoul Moment Co., Ltd.)",
+    "info2": "사업자등록번호: 00148871",
+    "info3": "대표자: 박우준",
+    "info4": "주소: 10F.-2, No. 231, Sec. 4, Zhongxiao E. Rd., Daan Dist., Taipei City 106, Taiwan (R.O.C.)",
+    "info5": "이메일: seoulmomentkr@gmail.com",
+    "info6": "Kakao & Line：seoulmoment",
+    "info7": "글로벌 B2B 문의"
+  }
 }
