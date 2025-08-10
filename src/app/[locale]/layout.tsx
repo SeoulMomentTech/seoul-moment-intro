@@ -1,3 +1,4 @@
+import Script from "next/script";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import type { PropsWithChildren } from "react";
@@ -43,6 +44,28 @@ export default async function RootLayout({
 
   return (
     <html className="scroll-smooth" lang={locale ?? "ko"}>
+      <head>
+        {process.env.NODE_ENV === "production" && (
+          <>
+            <Script
+              src="https://www.googletagmanager.com/gtag/js?id=G-Y6VPB373S3"
+              strategy="afterInteractive"
+            />
+            <Script
+              dangerouslySetInnerHTML={{
+                __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-Y6VPB373S3');  
+            `,
+              }}
+              id="gtag-init"
+              strategy="afterInteractive"
+            />
+          </>
+        )}
+      </head>
       <body>
         <NextIntlClientProvider messages={messages}>
           <Header />
