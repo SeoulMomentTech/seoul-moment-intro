@@ -198,7 +198,7 @@ export default function EmailForm() {
               <div className="flex gap-[8px]">
                 <input
                   className={cn(
-                    "flex-1 rounded-[4px] border border-black/20 px-[12px] py-[16px]",
+                    "w-full rounded-[4px] border border-black/20 px-[12px] py-[16px]",
                     "text-[16px] leading-[16px]",
                     "placeholder:text-black/20",
                   )}
@@ -234,7 +234,7 @@ export default function EmailForm() {
                   <div className="flex gap-[8px]">
                     <input
                       className={cn(
-                        "flex-1 rounded-[4px] border border-black/20 px-[12px] py-[16px]",
+                        "w-full rounded-[4px] border border-black/20 px-[12px] py-[16px]",
                         "text-[16px] leading-[16px]",
                         "placeholder:text-black/20",
                       )}
