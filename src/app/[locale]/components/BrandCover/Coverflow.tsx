@@ -63,6 +63,7 @@ export default function Coverflow({ className }: CoverflowProps) {
                 alt=""
                 className="rounded-[18px] object-cover"
                 fill
+                priority
                 src={img}
               />
             </div>

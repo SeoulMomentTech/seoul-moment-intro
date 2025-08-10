@@ -48,6 +48,7 @@ export default function CoverSlider({ className }: CoverSliderProps) {
                 alt=""
                 className="rounded-[18px] object-cover"
                 fill
+                priority
                 src={img}
               />
             </div>
