@@ -45,6 +45,10 @@ export default async function RootLayout({
   return (
     <html className="scroll-smooth" lang={locale ?? "ko"}>
       <head>
+        <meta
+          content="tkdfXJ6-ynp9D_0x2zpVyESgoJIA3YtbN5LxrpjEGxQ"
+          name="google-site-verification"
+        />
         {process.env.NODE_ENV === "production" && (
           <>
             <Script
