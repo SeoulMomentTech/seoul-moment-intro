@@ -25,16 +25,20 @@ export default function BrandCover({ className }: Props) {
   return (
     <Section
       className={cn(
-        "section-2 relative mx-auto flex max-w-[1920px] flex-col items-center justify-center gap-[52px] py-15",
-        "max-sm:h-auto max-sm:gap-[60px] max-sm:px-[20px] max-sm:py-[90px]",
+        "section-2 relative mx-auto flex max-w-[1920px] flex-col justify-center",
+        "h-auto min-h-screen gap-[72px] overflow-hidden py-[100px]",
+        "max-sm:min-h-0",
+        "max-md:gap-[48px] max-md:py-[80px]",
         className,
       )}
     >
-      <div className="px-[8px]">
+      {/* The heading sits on the page axis so the carousel reads as its
+          answer, rather than as an unrelated band floating underneath. */}
+      <div className="mx-auto w-full max-w-[1600px] px-[40px] max-md:px-[20px]">
         <h2
           className={cn(
-            "text-[50px] font-bold",
-            "max-xl:text-[40px] max-lg:text-center max-md:break-keep max-sm:text-[28px]",
+            "max-w-[16ch] text-[50px] leading-[1.02] font-bold break-keep",
+            "max-xl:text-[40px] max-sm:text-[28px]",
           )}
         >
           Not a Place. A Feeling

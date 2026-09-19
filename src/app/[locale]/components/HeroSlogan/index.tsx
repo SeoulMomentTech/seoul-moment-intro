@@ -41,7 +41,7 @@ export default function HeroSlogan({ className }: HeroSloganProps) {
   return (
     <>
       {isMobile ? (
-        <MobileHeroSlogan className="h-screen" />
+        <MobileHeroSlogan className={className} />
       ) : (
         <WebHeroSlogan className={className} />
       )}

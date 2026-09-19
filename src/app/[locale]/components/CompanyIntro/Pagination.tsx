@@ -21,7 +21,7 @@ export default function Pagination({
     <div
       className={cn(
         "flex items-center justify-end gap-[20px] pt-[60px] text-white",
-        "max-sm:w-[363px] max-sm:flex-col-reverse max-sm:items-start max-sm:gap-[90px]",
+        "max-sm:w-full max-sm:flex-col-reverse max-sm:items-start max-sm:gap-[32px]",
       )}
     >
       <div className={cn("flex items-center gap-[20px]", "max-sm:w-full")}>

@@ -141,50 +141,28 @@ body {
   opacity: 1 !important;
 }
 
-.cover-flow .swiper {
+/* `.cover-flow` is the Swiper root itself, not an ancestor of it. */
+.cover-flow {
   width: 100%;
-  padding-top: 50px;
-  padding-bottom: 50px;
+  padding-block: 24px;
 }
 
 .cover-flow .swiper-wrapper {
-  display: flex;
   align-items: center;
 }
 
+/* One slide size for every position; the coverflow depth is the only thing
+   that distinguishes the active slide, so nothing overflows its own box. */
 .cover-flow .swiper-slide {
-  display: flex;
-  align-items: center;
-  background-position: center;
-  background-size: cover;
-  transition: all 0.35s ease;
+  width: clamp(200px, 24vw, 420px);
   height: auto;
-  transform: scaleY(100);
+  aspect-ratio: 4 / 5;
 }
 
 .cover-flow .swiper-slide img {
   display: block;
-  width: 100%;
 }
 
-.cover-flow .swiper-slide {
-  @apply 2xl:w-[400px]! 2xl:max-w-[500px]!;
-}
-
-.cover-flow .swiper-slide div {
-  @apply 2xl:w-full! 2xl:max-w-[500px]!;
-}
-
-.cover-flow .swiper-slide-active {
-  @apply min-h-[400px] scale-110 transition-all;
-  @apply 2xl:w-[720px]!;
-}
-
-.cover-flow .swiper-slide-active > div {
-  @apply scale-125 transition-all duration-300;
-  @apply 2xl:w-[720px]!;
-}
-
-.info-box .swiper-pagination-bullet {
-  @apply bg-slate-200;
+.cover-slider .swiper-slide {
+  height: auto;
 }

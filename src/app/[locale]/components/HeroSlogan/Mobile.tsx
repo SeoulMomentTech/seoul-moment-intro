@@ -4,9 +4,10 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
-import { Fragment, useState } from "react";
+import { Fragment, useRef, useState } from "react";
 import Section from "@/components/ui/section";
 import useInterval from "@/hooks/useInterval";
+import useMediaQuery from "@/hooks/useMediaQuery";
 import { cn } from "@/utils/style";
 import { CONTENTS } from ".";
 
@@ -21,40 +22,58 @@ interface Turn {
 
 const turns = ["make", "your", "here", "seoul"];
 
-const styleMap = {
-  word: "inline-block max-md:text-[50px]",
-  image: "absolute h-[150px] rounded-lg ",
-};
+// One type size drives the whole composition; every offset below is in em, so
+// the staggered column keeps its proportions on any handset.
+const TYPE = "text-[clamp(3.125rem,13vw,3.5rem)]";
+
+const lines = [
+  { shiftOn: "odd", shifted: "-3em", gapAfter: "0.4em" },
+  { shiftOn: "even", shifted: "-3em", gapAfter: "0.6em" },
+  { shiftOn: "odd", shifted: "-2.4em", gapAfter: "0.4em" },
+  { shiftOn: "even", shifted: "-3.2em", gapAfter: "0" },
+] as const;
+
+const imagePlacements = [
+  "top-[-1.3em] left-0",
+  "right-[-0.6em] bottom-[-2.7em]",
+  "top-[-1.3em] left-0",
+  "right-[-0.6em] bottom-[-2.7em]",
+];
 
 export default function MobileHeroSlogan({ className }: Props) {
+  const sectionRef = useRef<HTMLElement>(null);
   const [currentTurn, setCurrentTurn] = useState<Turn | null>(null);
   const [isPaused, setIsPaused] = useState(true);
+  const prefersReducedMotion = useMediaQuery(
+    "(prefers-reduced-motion: reduce)",
+    false,
+  );
 
-  useGSAP(() => {
-    const tl = gsap.timeline();
+  useGSAP(
+    () => {
+      const tl = gsap.timeline();
 
-    tl.from(".section-one div", {
-      duration: 1,
-      opacity: 0,
-      ease: "power4",
-    });
-
-    tl.from("span", {
-      duration: 1.5,
-      yPercent: 100,
-      opacity: 0,
-      ease: "power4",
-      stagger: 0.01,
-    });
-
-    tl.call(() => {
-      setIsPaused(false);
-      setCurrentTurn({
-        index: 0,
-        name: "make",
+      tl.from(".slogan-line", {
+        duration: 1,
+        opacity: 0,
+        ease: "power4",
       });
-    });
-  });
+
+      tl.from(".slogan-letter", {
+        duration: 1.5,
+        yPercent: 100,
+        opacity: 0,
+        ease: "power4",
+        stagger: 0.01,
+      });
+
+      tl.call(() => {
+        setIsPaused(false);
+        setCurrentTurn({ index: 0, name: "make" });
+      });
+    },
+    { scope: sectionRef },
+  );
 
   useInterval({
     duration: 2500,
@@ -63,36 +82,34 @@ export default function MobileHeroSlogan({ className }: Props) {
 
       const nextTurn = ((currentTurn?.index ?? 4) + 1) % 4;
 
-      setCurrentTurn({
-        index: nextTurn,
-        name: turns[nextTurn],
-      });
+      setCurrentTurn({ index: nextTurn, name: turns[nextTurn] });
     },
-    pause: isPaused,
+    pause: isPaused || prefersReducedMotion,
   });
 
   return (
     <Section
       className={cn(
         "section-one hidden flex-col items-center pt-[145px]",
-        "relative px-[20px] pb-[72px] max-md:pb-0 max-sm:flex",
+        "relative px-[20px] pb-[72px] max-sm:flex",
         className,
       )}
+      ref={sectionRef}
     >
       <div className="relative">
         <TextContainer turn={currentTurn} />
         <ImageBox images={CONTENTS.map(({ src }) => src)} turn={currentTurn} />
       </div>
       <a
+        aria-label="Skip to the contact section"
         className={cn(
           "flex items-center justify-center",
-          "h-[54px] w-[54px] rounded-full bg-black",
-          "absolute bottom-0 mb-[155px]",
-          "max-md:mb-[60px] max-md:h-[40px] max-md:w-[40px]",
+          "h-[40px] w-[40px] rounded-full bg-black text-white",
+          "absolute bottom-0 mb-[60px]",
         )}
         href="#contact-us"
       >
-        <ChevronDown className={cn("text-white")} height={24} width={24} />
+        <ChevronDown aria-hidden height={22} width={22} />
       </a>
     </Section>
   );
@@ -105,46 +122,28 @@ interface ImageBoxProps extends Record<"turn", Turn | null> {
 function ImageBox({ turn, images }: ImageBoxProps) {
   return (
     <>
-      <div
-        className={cn(
-          "video-container overflow-hidden transition-all duration-700",
-          "unvisible absolute top-[-65px] z-0 h-[20px] w-[20px] scale-0 rounded-[8px]",
-          turn?.index === 0 &&
-            "visible mx-1 h-[160px] w-[160px] scale-100 opacity-100 hover:opacity-100",
-        )}
-      >
-        <Image alt="" fill priority src={images[0]} />
-      </div>
-      <div
-        className={cn(
-          "video-container overflow-hidden transition-all duration-700",
-          "unvisible absolute right-[-30px] bottom-[-135px] z-0 h-[20px] w-[20px] scale-0 rounded-[8px]",
-          turn?.index === 1 &&
-            "visible mx-1 h-[160px] w-[160px] scale-100 opacity-100 hover:opacity-100",
-        )}
-      >
-        <Image alt="" fill priority src={images[1]} />
-      </div>
-      <div
-        className={cn(
-          "video-container overflow-hidden transition-all duration-700",
-          "unvisible absolute top-[-65px] z-0 h-[20px] w-[20px] scale-0 rounded-[8px]",
-          turn?.index === 2 &&
-            "visible mx-1 h-[160px] w-[160px] scale-100 opacity-100 hover:opacity-100",
-        )}
-      >
-        <Image alt="" fill priority src={images[2]} />
-      </div>
-      <div
-        className={cn(
-          "video-container overflow-hidden transition-all duration-700",
-          "unvisible absolute right-[-30px] bottom-[-135px] z-0 h-[20px] w-[20px] scale-0 rounded-[8px]",
-          turn?.index === 3 &&
-            "visible mx-1 h-[160px] w-[160px] scale-100 opacity-100 hover:opacity-100",
-        )}
-      >
-        <Image alt="" fill priority src={images[3]} />
-      </div>
+      {images.map((src, idx) => (
+        <div
+          className={cn(
+            "absolute z-0 overflow-hidden rounded-[0.16em]",
+            "transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]",
+            TYPE,
+            "h-[0.4em] w-[0.4em] scale-0",
+            imagePlacements[idx],
+            turn?.index === idx && "h-[3.2em] w-[3.2em] scale-100",
+          )}
+          key={src}
+        >
+          <Image
+            alt=""
+            className="object-cover"
+            fill
+            priority
+            sizes="200px"
+            src={src}
+          />
+        </div>
+      ))}
     </>
   );
 }
@@ -153,107 +152,45 @@ function TextContainer({ turn }: Record<"turn", Turn | null>) {
   return (
     <div
       className={cn(
-        "relative z-1 flex w-[320px] flex-col justify-center",
-        "text-[10rem] leading-none font-bold",
-        "max-xl:text-[5rem]",
+        "relative z-1 flex w-[6.4em] flex-col justify-center",
+        TYPE,
+        "leading-none font-bold",
       )}
     >
-      <div
-        className={cn(
-          "inline-flex w-full translate-x-[-20px] justify-end gap-[10px] overflow-hidden text-center transition-transform duration-700",
-          turn && turn.index % 2 === 1 && "translate-x-[-150px]",
-        )}
-      >
-        {CONTENTS.slice(0, 1).map(({ word, activeKey }) => {
-          return (
-            <Fragment key={activeKey}>
+      {CONTENTS.map(({ word, activeKey }, lineIdx) => {
+        const line = lines[lineIdx];
+        const isShifted =
+          turn != null &&
+          (line.shiftOn === "odd"
+            ? turn.index % 2 === 1
+            : turn.index % 2 === 0);
+
+        return (
+          <Fragment key={activeKey}>
+            <div
+              className={cn(
+                "slogan-line flex w-full items-center justify-end gap-[0.2em] overflow-hidden",
+                "transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]",
+              )}
+              style={{
+                transform: `translateX(${isShifted ? line.shifted : "-0.4em"})`,
+              }}
+            >
               {word.split("").map((w, idx) => (
-                <div
-                  className={cn("flex items-center")}
+                <span
+                  className="slogan-letter inline-block"
                   key={`${word}-${w}-${idx + 1}`}
                 >
-                  <span className={styleMap.word} key={`word1-${w}-${idx + 1}`}>
-                    {w}
-                  </span>
-                </div>
+                  {w}
+                </span>
               ))}
-            </Fragment>
-          );
-        })}
-      </div>
-      <div className="h-[20px]" />
-      <div
-        className={cn(
-          "flex w-full justify-end gap-[10px] overflow-hidden text-center",
-          "transition-transform duration-700",
-          "translate-x-[-20px]",
-          turn && turn.index % 2 === 0 && "translate-x-[-150px]",
-        )}
-      >
-        {CONTENTS.slice(1, 2).map(({ word, activeKey }) => {
-          return (
-            <Fragment key={activeKey}>
-              {word.split("").map((w, idx) => (
-                <div
-                  className={cn("flex items-center")}
-                  key={`${word}-${w}-${idx + 1}`}
-                >
-                  <span className={styleMap.word} key={`word1-${w}-${idx + 1}`}>
-                    {w}
-                  </span>
-                </div>
-              ))}
-            </Fragment>
-          );
-        })}
-      </div>
-      <div className="h-[30px]" />
-      <div
-        className={cn(
-          "flex w-full translate-x-[-20px] items-center justify-end gap-[10px] overflow-hidden text-center",
-          "transition-transform duration-700",
-          turn && turn.index % 2 === 1 && "translate-x-[-120px]",
-        )}
-      >
-        {CONTENTS.slice(2, CONTENTS.length - 1).map(({ word, activeKey }) => {
-          return (
-            <Fragment key={activeKey}>
-              {word.split("").map((w, idx) => (
-                <div
-                  className={cn("flex items-center")}
-                  key={`${word}-${w}-${idx + 1}`}
-                >
-                  <span className={styleMap.word}>{w}</span>
-                </div>
-              ))}
-            </Fragment>
-          );
-        })}
-      </div>
-      <div className="h-[20px]" />
-      <div
-        className={cn(
-          "flex w-full items-center justify-end gap-[10px] overflow-hidden text-center",
-          "transition-transform duration-700",
-          "translate-x-[-20px]",
-          turn && turn.index % 2 === 0 && "translate-x-[-160px]",
-        )}
-      >
-        {CONTENTS.slice(3, CONTENTS.length).map(({ word, activeKey }) => {
-          return (
-            <Fragment key={activeKey}>
-              {word.split("").map((w, idx) => (
-                <div
-                  className={cn("flex items-center")}
-                  key={`${word}-${w}-${idx + 1}`}
-                >
-                  <span className={styleMap.word}>{w}</span>
-                </div>
-              ))}
-            </Fragment>
-          );
-        })}
-      </div>
+            </div>
+            {line.gapAfter !== "0" && (
+              <div aria-hidden style={{ height: line.gapAfter }} />
+            )}
+          </Fragment>
+        );
+      })}
     </div>
   );
 }

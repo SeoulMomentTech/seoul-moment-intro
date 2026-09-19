@@ -26,35 +26,35 @@ export default function CoverSlider({ className }: CoverSliderProps) {
     <Swiper
       className={cn("cover-slider w-full", className)}
       loop
-      loopAdditionalSlides={1}
+      loopAdditionalSlides={3}
       ref={swiperRef}
+      slidesOffsetBefore={20}
       slidesPerView="auto"
       spaceBetween={16}
       updateOnWindowResize
     >
-      {[...images, ...images].map((img, index) => {
-        return (
-          <SwiperSlide
-            className={cn("min-h-[280px]! w-[190px]!")}
-            key={`card-${index + 1}`}
-            onClick={() => handleClick(index)}
+      {images.map((img, index) => (
+        <SwiperSlide
+          className={cn("w-[190px]!")}
+          key={img}
+          onClick={() => handleClick(index)}
+        >
+          <button
+            aria-label={`Show image ${index + 1} of ${images.length}`}
+            className="relative block aspect-[4/5] w-full cursor-pointer overflow-hidden rounded-[18px]"
+            type="button"
           >
-            <div
-              className={cn(
-                "relative min-h-[280px]! w-[190px]! cursor-pointer",
-              )}
-            >
-              <Image
-                alt=""
-                className="rounded-[18px] object-cover"
-                fill
-                priority
-                src={img}
-              />
-            </div>
-          </SwiperSlide>
-        );
-      })}
+            <Image
+              alt=""
+              className="object-cover"
+              fill
+              priority={index < 2}
+              sizes="190px"
+              src={img}
+            />
+          </button>
+        </SwiperSlide>
+      ))}
     </Swiper>
   );
 }

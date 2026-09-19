@@ -11,7 +11,7 @@ export default function Home() {
     <div className="relative">
       <SectionsWrapper>
         <Landing />
-        <HeroSlogan className="h-[calc(100vh-72px)] bg-white" />
+        <HeroSlogan className="h-screen bg-white" />
         <CompanyIntro />
         <BrandCover />
         <Information />

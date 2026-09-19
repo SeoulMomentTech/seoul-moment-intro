@@ -108,10 +108,7 @@ function CompanyIntro() {
 
   return (
     <Section
-      className={cn(
-        "company-intro relative bg-black",
-        "h-[1080px] max-md:h-full",
-      )}
+      className={cn("company-intro relative bg-black", "h-auto min-h-screen")}
     >
       {info.map(({ videoWeb, videoMobile }, idx) => {
         return (
@@ -119,8 +116,9 @@ function CompanyIntro() {
             active={idx === activeIdx}
             autoPlay
             className={cn(
-              "absolute h-full w-full scale-90 object-cover opacity-0 transition-all duration-500",
-              idx === activeIdx && "scale-100 opacity-45",
+              "absolute h-full w-full scale-90 object-cover opacity-0",
+              "transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]",
+              idx === activeIdx && "scale-100 opacity-55",
             )}
             key={`${id}-${idx + 1}-company-intro-${isMobile ? "mobile" : "web"}`}
             loop
@@ -131,18 +129,22 @@ function CompanyIntro() {
           />
         );
       })}
+      {/* Keeps the copy readable whatever frame the footage is on. */}
+      <div
+        aria-hidden
+        className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/25 to-black/90"
+      />
       <div
         className={cn(
-          "relative",
-          "mx-auto max-w-[1200px] pt-[140px]",
-          "max-xl:px-[20px]",
-          "max-md:pt-[90px] max-md:pb-[60px]",
+          "relative flex min-h-screen flex-col justify-between",
+          "mx-auto max-w-[1200px] px-[40px] py-[100px]",
+          "max-md:px-[20px] max-md:py-[80px]",
         )}
       >
         <div
           className={cn(
-            "h-[81px]",
-            "max-sm:flex max-sm:h-[44px] max-sm:flex-col max-sm:gap-[10px]",
+            "flex min-h-[81px] flex-col gap-[8px]",
+            "max-sm:min-h-[44px] max-sm:gap-[10px]",
           )}
         >
           <h2
@@ -153,43 +155,45 @@ function CompanyIntro() {
           >
             {info[activeIdx].title1}
           </h2>
-          <p className={cn("text-[18px] text-gray-200", "max-md:text-[14px]")}>
+          <p className={cn("text-[18px] text-white/70", "max-md:text-[14px]")}>
             {t(info[activeIdx].description1)}
           </p>
         </div>
-        <Swiper
-          autoplay={{ delay: 7000 }}
-          className="w-full"
-          effect="fade"
-          loop
-          modules={[EffectFade, Autoplay]}
-          onAutoplay={() => setProgress(0)}
-          onAutoplayTimeLeft={(_, __, progressFraction) => {
-            setProgress(1 - progressFraction);
-          }}
-          onSlideChange={handleSlideChange}
-          ref={swiperRef}
-          slidesPerView="auto"
-          spaceBetween={30}
-        >
-          {info.map((item, idx) => (
-            <SwiperSlide key={`${id}-${idx + 1}`}>
-              <Card
-                description={item.description2}
-                subTitle={item.subTitle2}
-                title={item.title2}
-              />
-            </SwiperSlide>
-          ))}
-        </Swiper>
-        <div className={cn("flex justify-end", "max-sm:justify-center")}>
-          <Pagination
-            currentPage={activeIdx + 1}
-            handleNext={handleNext}
-            handlePrev={handlePrev}
-            progress={progress}
-            total={info.length}
-          />
+        <div className="flex flex-col">
+          <Swiper
+            autoplay={{ delay: 7000 }}
+            className="w-full"
+            effect="fade"
+            loop
+            modules={[EffectFade, Autoplay]}
+            onAutoplay={() => setProgress(0)}
+            onAutoplayTimeLeft={(_, __, progressFraction) => {
+              setProgress(1 - progressFraction);
+            }}
+            onSlideChange={handleSlideChange}
+            ref={swiperRef}
+            slidesPerView="auto"
+            spaceBetween={30}
+          >
+            {info.map((item, idx) => (
+              <SwiperSlide key={`${id}-${idx + 1}`}>
+                <Card
+                  description={item.description2}
+                  subTitle={item.subTitle2}
+                  title={item.title2}
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          <div className={cn("flex justify-end", "max-sm:justify-center")}>
+            <Pagination
+              currentPage={activeIdx + 1}
+              handleNext={handleNext}
+              handlePrev={handlePrev}
+              progress={progress}
+              total={info.length}
+            />
+          </div>
         </div>
       </div>
     </Section>

@@ -28,48 +28,46 @@ export default function Coverflow({ className }: CoverflowProps) {
     <Swiper
       centeredSlides
       className={cn("cover-flow w-full", className)}
+      // Depth alone carries the falloff. The previous setup scaled the slide
+      // and its child on top of this, which pushed the active image outside
+      // its own box and over its neighbours.
       coverflowEffect={{
         rotate: 0,
-        depth: 200,
-        stretch: -45,
+        depth: 220,
+        stretch: 0,
         modifier: 1,
         slideShadows: false,
       }}
       effect="coverflow"
       loop
-      loopAdditionalSlides={1}
+      loopAdditionalSlides={3}
       modules={[EffectCoverflow]}
       ref={swiperRef}
       slidesPerView="auto"
+      spaceBetween={28}
       updateOnWindowResize
     >
-      {[...images, ...images].map((img, index) => {
-        return (
-          <SwiperSlide
-            className={cn(
-              "mx-[10px] min-h-[400px]! w-[720px]! max-2xl:w-[30vw]!",
-              "max-md:min-h-[200px]! max-md:w-[40vw]!",
-            )}
-            key={`card-${index + 1}`}
-            onClick={() => handleClick(index)}
+      {[...images, ...images].map((img, index) => (
+        <SwiperSlide
+          key={`${img}-${index + 1}`}
+          onClick={() => handleClick(index)}
+        >
+          <button
+            aria-label={`Show image ${(index % images.length) + 1} of ${images.length}`}
+            className="relative block h-full w-full cursor-pointer overflow-hidden rounded-[18px]"
+            type="button"
           >
-            <div
-              className={cn(
-                "relative min-h-[260px]! cursor-pointer max-2xl:w-[30vw]!",
-                "max-md:min-h-[200px]! max-md:w-[40vw]!",
-              )}
-            >
-              <Image
-                alt=""
-                className="rounded-[18px] object-cover"
-                fill
-                priority
-                src={img}
-              />
-            </div>
-          </SwiperSlide>
-        );
-      })}
+            <Image
+              alt=""
+              className="object-cover"
+              fill
+              priority={index < 3}
+              sizes="(max-width: 768px) 60vw, 30vw"
+              src={img}
+            />
+          </button>
+        </SwiperSlide>
+      ))}
     </Swiper>
   );
 }
