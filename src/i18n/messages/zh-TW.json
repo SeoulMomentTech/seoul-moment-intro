@@ -2,7 +2,8 @@
   "common": {
     "verify": "驗證",
     "verified": "認證完成",
-    "confirm": "確認"
+    "confirm": "確認",
+    "skipToContent": "跳至主要內容"
   },
   "info": {
     "1": {

@@ -105,6 +105,8 @@ export default function MobileHeroSlogan({ className }: Props) {
         className={cn(
           "flex items-center justify-center",
           "h-[40px] w-[40px] rounded-full bg-black text-white",
+          "transition-[background-color,scale] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]",
+          "hover:bg-black/80 active:scale-[0.98]",
           "absolute bottom-0 mb-[60px]",
         )}
         href="#contact-us"

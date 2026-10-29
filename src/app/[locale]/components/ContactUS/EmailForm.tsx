@@ -38,7 +38,7 @@ export default function EmailForm() {
     reset,
     setValue,
     setError,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<EmailInputs>({
     defaultValues: {
       message: "",
@@ -54,6 +54,8 @@ export default function EmailForm() {
   const recaptchaRef = useRef<ReCAPTCHA>(null);
   const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
   const [isCodeSent, setIsCodeSent] = useState(false);
+  const [isSendingCode, setIsSendingCode] = useState(false);
+  const [recaptchaError, setRecaptchaError] = useState(false);
   const [modalOpen, setModalOpen] = useState<ModalStatus | null>(null);
 
   const isEmpty = Object.values(formValues).some(
@@ -63,7 +65,7 @@ export default function EmailForm() {
 
   const onSubmit: SubmitHandler<EmailInputs> = async (data) => {
     if (!recaptchaToken) {
-      alert("Please complete the reCAPTCHA.");
+      setRecaptchaError(true);
       return;
     }
 
@@ -102,10 +104,16 @@ export default function EmailForm() {
         return;
       }
 
+      setIsSendingCode(true);
       await postEmailCode(email);
       setIsCodeSent(true);
     } catch {
       setIsCodeSent(false);
+      setError("email", {
+        message: "We couldn't send the code. Please try again.",
+      });
+    } finally {
+      setIsSendingCode(false);
     }
   };
 
@@ -146,9 +154,9 @@ export default function EmailForm() {
             "max-md:mb-[20px] max-md:text-center",
           )}
         >
-          <h4 className={cn("text-[20px] leading-[20px] font-semibold")}>
-            Contact Us
-          </h4>
+          <h3 className={cn("text-[20px] leading-[20px] font-semibold")}>
+            Contact us
+          </h3>
           <span className={cn("text-[14px] text-black/40")}>
             <Trans id="subtitle1" ns="email" />{" "}
             <br className="hidden max-md:inline" />
@@ -164,17 +172,14 @@ export default function EmailForm() {
           )}
         >
           <span className="text-center text-black/60">
-            ✉ 
             <Trans id="span1" ns="email" />
           </span>
           <Divider className="max-md:hidden" />
           <span className="text-center text-black/60">
-            🤝 
             <Trans id="span2" ns="email" />
           </span>
           <Divider className="max-md:hidden" />
           <span className="text-center text-black/60">
-            🎥  
             <Trans id="span3" ns="email" />
           </span>
         </div>
@@ -185,10 +190,11 @@ export default function EmailForm() {
                 className={cn(
                   "rounded-[4px] border border-black/20 px-[12px] py-[16px]",
                   "text-[16px] leading-[16px]",
-                  "placeholder:text-black/20",
+                  "aria-invalid:border-error placeholder:text-black/20",
                 )}
-                placeholder="Your Name"
+                placeholder="Your name"
                 {...register("name", { required: "Please enter your name." })}
+                aria-invalid={Boolean(errors.name)}
               />
               {errors.name && (
                 <span className="text-error">{errors.name.message}</span>
@@ -200,7 +206,7 @@ export default function EmailForm() {
                   className={cn(
                     "w-full rounded-[4px] border border-black/20 px-[12px] py-[16px]",
                     "text-[16px] leading-[16px]",
-                    "placeholder:text-black/20",
+                    "aria-invalid:border-error placeholder:text-black/20",
                   )}
                   placeholder="Please enter your email"
                   {...register("email", {
@@ -210,10 +216,11 @@ export default function EmailForm() {
                       message: "Please enter a valid email address.",
                     },
                   })}
+                  aria-invalid={Boolean(errors.email)}
                 />
                 <Button
                   className="whitespace-pre max-md:leading-[16px]"
-                  disabled={isCodeSent}
+                  disabled={isCodeSent || isSendingCode}
                   onClick={handleClickVerify}
                 >
                   <Trans id="verify" ns="common" />
@@ -236,12 +243,13 @@ export default function EmailForm() {
                       className={cn(
                         "w-full rounded-[4px] border border-black/20 px-[12px] py-[16px]",
                         "text-[16px] leading-[16px]",
-                        "placeholder:text-black/20",
+                        "aria-invalid:border-error placeholder:text-black/20",
                       )}
                       placeholder="Please enter the verification code"
                       {...register("code", {
-                        required: "Code is incorrect, Please check again.",
+                        required: "Please enter the verification code.",
                       })}
+                      aria-invalid={Boolean(errors.code)}
                     />
                     <Button
                       className="whitespace-pre max-md:leading-[16px]"
@@ -270,7 +278,7 @@ export default function EmailForm() {
                 className={cn(
                   "flex-1 rounded-[4px] border border-black/20 px-[12px] py-[16px]",
                   "text-[16px] leading-[16px]",
-                  "placeholder:text-black/20",
+                  "aria-invalid:border-error placeholder:text-black/20",
                 )}
                 placeholder="Email subject"
                 {...register("subject", {
@@ -280,6 +288,7 @@ export default function EmailForm() {
                     message: "The subject must be at least 10 characters.",
                   },
                 })}
+                aria-invalid={Boolean(errors.subject)}
               />
               {errors.subject && (
                 <span className="text-error">{errors.subject.message}</span>
@@ -290,9 +299,9 @@ export default function EmailForm() {
                 className={cn(
                   "h-[100px] rounded-[4px] border border-black/20 px-[12px] py-[16px]",
                   "resize-none rounded-[4px] text-[16px] leading-[16px]",
-                  "placeholder:text-black/20",
+                  "aria-invalid:border-error placeholder:text-black/20",
                 )}
-                placeholder="Write your message(30 characters)"
+                placeholder="Write your message (at least 30 characters)"
                 {...register("message", {
                   required: "Please enter your message.",
                   minLength: {
@@ -300,6 +309,7 @@ export default function EmailForm() {
                     message: "Please enter at least 30 characters.",
                   },
                 })}
+                aria-invalid={Boolean(errors.message)}
               />
               {errors.message && (
                 <span className="text-error">{errors.message.message}</span>
@@ -309,10 +319,10 @@ export default function EmailForm() {
           <div className="flex flex-col gap-[10px]">
             <Button
               className="p-[16px] font-semibold max-md:px-[20px] max-md:leading-[16px]"
-              disabled={isDisabled}
+              disabled={isDisabled || isSubmitting}
               type="submit"
             >
-              Send Message
+              {isSubmitting ? "Sending…" : "Send message"}
             </Button>
             <span
               className={cn(
@@ -320,7 +330,7 @@ export default function EmailForm() {
                 "max-md:text-[12px] max-md:leading-[12px]",
               )}
             >
-              This site is protected by reCAPTCHA and the Google Privacy Polict
+              This site is protected by reCAPTCHA and the Google Privacy Policy
               and Terms of Service apply.
             </span>
             <div
@@ -331,13 +341,21 @@ export default function EmailForm() {
               )}
             >
               <ReCAPTCHA
-                onChange={setRecaptchaToken}
+                onChange={(token) => {
+                  setRecaptchaToken(token);
+                  setRecaptchaError(false);
+                }}
                 onError={() => setRecaptchaToken(null)}
                 ref={recaptchaRef}
                 sitekey={RECAPTCHA_SITE_KEY}
                 size="normal"
               />
             </div>
+            {recaptchaError && (
+              <span className="text-error text-center" role="alert">
+                Please complete the reCAPTCHA before sending.
+              </span>
+            )}
           </div>
         </div>
       </form>
@@ -369,7 +387,7 @@ export default function EmailForm() {
           <div className="flex flex-col items-center justify-center gap-[24px]">
             <Image alt="" height={40} src="/alert_error.svg" width={40} />
             <p className="text-center">
-              An error occurred while sending.
+              We couldn’t send your message.
               <br />
               Please try again later.
             </p>

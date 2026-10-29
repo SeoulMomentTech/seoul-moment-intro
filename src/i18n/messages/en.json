@@ -2,7 +2,8 @@
   "common": {
     "verify": "Verify",
     "verified": "Verified",
-    "confirm": "Confirm"
+    "confirm": "Confirm",
+    "skipToContent": "Skip to content"
   },
   "info": {
     "1": {

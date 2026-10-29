@@ -76,15 +76,15 @@ export default function ContactUS() {
               />
             </div>
             <div className="flex items-end justify-between">
-              <h4
+              <h2
                 className={cn(
-                  "w-[485px] text-[80px] leading-[80px] font-bold",
+                  "w-[485px] text-[80px] leading-[80px] font-bold text-balance",
                   "max-2xl:w-auto max-2xl:max-w-[751px]",
                   "max-w-[485px] max-md:w-auto max-md:text-center max-md:text-[44px] max-md:leading-[44px]",
                 )}
               >
                 We’re Waiting for Our Moment
-              </h4>
+              </h2>
               <Image
                 alt=""
                 className="hidden max-2xl:block max-md:hidden"

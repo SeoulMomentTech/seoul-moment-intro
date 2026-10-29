@@ -26,7 +26,7 @@ export default function BrandCover({ className }: Props) {
     <Section
       className={cn(
         "section-2 relative mx-auto flex max-w-[1920px] flex-col justify-center",
-        "h-auto min-h-screen gap-[72px] overflow-hidden py-[100px]",
+        "h-auto min-h-dvh gap-[72px] overflow-hidden py-[100px]",
         "max-sm:min-h-0",
         "max-md:gap-[48px] max-md:py-[80px]",
         className,
@@ -37,7 +37,7 @@ export default function BrandCover({ className }: Props) {
       <div className="mx-auto w-full max-w-[1600px] px-[40px] max-md:px-[20px]">
         <h2
           className={cn(
-            "max-w-[16ch] text-[50px] leading-[1.02] font-bold break-keep",
+            "max-w-[16ch] text-[50px] leading-[1.02] font-bold text-balance break-keep",
             "max-xl:text-[40px] max-sm:text-[28px]",
           )}
         >

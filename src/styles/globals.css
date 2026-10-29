@@ -38,7 +38,6 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
-  --color-gray: #707070;
   --color-error: #ff383c;
   --color-sent: #0088ff;
 
@@ -130,6 +129,22 @@
 
 body {
   font-family: "Pretendard", sans-serif;
+}
+
+/* 키보드 포커스 링. 어두운 섹션의 컨트롤은 outline-white로 덮어쓴다. */
+:focus-visible {
+  outline: 2px solid black;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 .company-intro .swiper-slide {

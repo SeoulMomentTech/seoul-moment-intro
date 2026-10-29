@@ -2,7 +2,8 @@
   "common": {
     "verify": "인증",
     "verified": "인증 완료",
-    "confirm": "확인"
+    "confirm": "확인",
+    "skipToContent": "본문으로 건너뛰기"
   },
   "info": {
     "1": {

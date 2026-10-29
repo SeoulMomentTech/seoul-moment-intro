@@ -30,7 +30,7 @@ export default function Landing() {
   );
 
   return (
-    <Section className="relative h-auto min-h-screen transition-all will-change-[background-color]">
+    <Section className="relative h-auto min-h-dvh">
       <div
         className={cn(
           "fixed top-0 right-[50%] left-[50%] z-10",
@@ -39,14 +39,14 @@ export default function Landing() {
         )}
         ref={titleRef}
       >
-        <h3
+        <h1
           className={cn(
             "text-[150px] font-semibold whitespace-pre text-white",
             "max-xl:text-[100px] max-md:text-[80px] max-sm:text-[40px]",
           )}
         >
           SEOUL MOMENT
-        </h3>
+        </h1>
       </div>
       <Section className="bg-white" />
       <Section className="bg-black" ref={sectionRef} />

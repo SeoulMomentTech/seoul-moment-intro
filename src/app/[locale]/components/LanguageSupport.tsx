@@ -30,12 +30,13 @@ export default function LanguageSupport() {
           className={cn(
             "flex min-w-[110px] items-center justify-between px-[8px] py-[4px] text-start",
             "rounded-[8px] border border-black text-[14px]",
+            "transition-colors duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:bg-black/5",
             "max-md:min-w-[120px]",
           )}
           type="button"
         >
           {locales[currentLocale]}
-          <ChevronDown height={16} width={16} />
+          <ChevronDown aria-hidden height={16} width={16} />
         </button>
       </DropdownMenuTrigger>
       <DropdownMenuContent

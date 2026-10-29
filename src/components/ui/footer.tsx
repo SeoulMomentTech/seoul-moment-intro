@@ -13,7 +13,7 @@ export default function Footer() {
       className={cn(
         "flex items-center justify-center",
         "px-5 pt-10 pb-12",
-        "border-t border-t-slate-200 bg-white",
+        "border-t border-t-black/10 bg-white",
         "max-md:min-h-[200px] max-md:py-8 max-md:pb-10 max-md:text-[13px]",
       )}
     >
@@ -59,9 +59,14 @@ export default function Footer() {
         >
           <LanguageSupport />
           <div className="flex gap-[10px]">
-            <Link href="" rel="noopener noreferrer" target="_blank">
+            <Link
+              className="transition-opacity duration-300 hover:opacity-70"
+              href=""
+              rel="noopener noreferrer"
+              target="_blank"
+            >
               <Image
-                alt="line"
+                alt="LINE"
                 className="max-md:h-[36px] max-md:w-[36px]"
                 height={50}
                 src="/line.svg"
@@ -69,12 +74,13 @@ export default function Footer() {
               />
             </Link>
             <Link
+              className="transition-opacity duration-300 hover:opacity-70"
               href="https://www.instagram.com/seoul_moment_tw"
               rel="noopener noreferrer"
               target="_blank"
             >
               <Image
-                alt="instagram"
+                alt="Instagram"
                 className="max-md:h-[36px] max-md:w-[36px]"
                 height={50}
                 src="/insta.svg"

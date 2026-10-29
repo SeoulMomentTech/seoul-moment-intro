@@ -108,7 +108,7 @@ function CompanyIntro() {
 
   return (
     <Section
-      className={cn("company-intro relative bg-black", "h-auto min-h-screen")}
+      className={cn("company-intro relative bg-black", "h-auto min-h-dvh")}
     >
       {info.map(({ videoWeb, videoMobile }, idx) => {
         return (
@@ -136,7 +136,7 @@ function CompanyIntro() {
       />
       <div
         className={cn(
-          "relative flex min-h-screen flex-col justify-between",
+          "relative flex min-h-dvh flex-col justify-between",
           "mx-auto max-w-[1200px] px-[40px] py-[100px]",
           "max-md:px-[20px] max-md:py-[80px]",
         )}

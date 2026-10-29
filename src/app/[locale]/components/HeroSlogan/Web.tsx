@@ -150,6 +150,8 @@ export default function WebHeroSlogan({ className }: Props) {
         className={cn(
           "flex items-center justify-center",
           "h-[54px] w-[54px] rounded-full bg-black text-white",
+          "transition-[background-color,scale] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]",
+          "hover:bg-black/80 active:scale-[0.98]",
           "absolute bottom-0 mb-[155px]",
         )}
         href="#contact-us"

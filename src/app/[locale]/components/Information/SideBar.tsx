@@ -22,7 +22,7 @@ export default function SideBar() {
     >
       <button
         className={cn(
-          "cursor-pointer text-start text-black/50 hover:underline",
+          "cursor-pointer text-start text-black/50 transition-colors duration-300 hover:text-black hover:underline",
           (activeId === "link1" || activeId === "") && "font-bold text-black",
         )}
         onClick={handleClick("#link1")}
@@ -32,7 +32,7 @@ export default function SideBar() {
       </button>
       <button
         className={cn(
-          "cursor-pointer text-start text-black/50 hover:underline",
+          "cursor-pointer text-start text-black/50 transition-colors duration-300 hover:text-black hover:underline",
           activeId === "link2" && "font-bold text-black",
         )}
         onClick={handleClick("#link2")}
@@ -42,7 +42,7 @@ export default function SideBar() {
       </button>
       <button
         className={cn(
-          "cursor-pointer text-start text-black/50 hover:underline",
+          "cursor-pointer text-start text-black/50 transition-colors duration-300 hover:text-black hover:underline",
           activeId === "link3" && "font-bold text-black",
         )}
         onClick={handleClick("#link3")}

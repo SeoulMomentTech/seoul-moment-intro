@@ -7,7 +7,7 @@ export default function Section({
   ...props
 }: ComponentProps<"section">) {
   return (
-    <section className={cn("h-[100vh] w-full", className)} {...props}>
+    <section className={cn("h-dvh w-full", className)} {...props}>
       {children}
     </section>
   );

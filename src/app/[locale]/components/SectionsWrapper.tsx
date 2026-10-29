@@ -10,11 +10,7 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 export default function SectionsWrapper({ children }: PropsWithChildren) {
   return (
-    <ReactLenis
-      className="wrapper"
-      root
-      style={{ height: "100vh", overflowY: "auto", scrollSnapType: "start" }}
-    >
+    <ReactLenis options={{ anchors: true }} root>
       {children}
     </ReactLenis>
   );

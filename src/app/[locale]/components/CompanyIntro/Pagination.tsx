@@ -2,6 +2,13 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { cn } from "@/utils/style";
 import ProgressBar from "./ProgressBar";
 
+const control = cn(
+  "flex h-[40px] w-[40px] cursor-pointer items-center justify-center",
+  "rounded-[4px] border border-white text-white",
+  "transition-[background-color,color,scale] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]",
+  "hover:bg-white hover:text-black focus-visible:outline-white active:scale-[0.98]",
+);
+
 interface PaginationProps {
   total: number;
   currentPage: number;
@@ -25,31 +32,27 @@ export default function Pagination({
       )}
     >
       <div className={cn("flex items-center gap-[20px]", "max-sm:w-full")}>
-        <span className="text-[12px]">
+        <span className="text-[12px] tabular-nums">
           <b>{currentPage} /</b> {total}
         </span>
         <ProgressBar className={cn("max-sm:flex-1")} progress={progress} />
       </div>
       <div className="flex justify-end gap-[10px]">
         <button
-          className={cn(
-            "h-[40px] w-[40px] rounded-[4px] border border-white",
-            "flex cursor-pointer items-center justify-center",
-          )}
+          aria-label="Previous slide"
+          className={control}
           onClick={handlePrev}
           type="button"
         >
-          <ArrowLeft height={24} width={24} />
+          <ArrowLeft aria-hidden height={24} width={24} />
         </button>
         <button
-          className={cn(
-            "h-[40px] w-[40px] rounded-[4px] border border-white text-white",
-            "flex cursor-pointer items-center justify-center",
-          )}
+          aria-label="Next slide"
+          className={control}
           onClick={handleNext}
           type="button"
         >
-          <ArrowRight height={24} width={24} />
+          <ArrowRight aria-hidden height={24} width={24} />
         </button>
       </div>
     </div>
