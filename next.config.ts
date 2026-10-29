@@ -2,7 +2,8 @@ import type { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // 상위 디렉터리의 다른 lockfile을 워크스페이스 루트로 오인하지 않도록 고정
+  outputFileTracingRoot: __dirname,
   images: {
     remotePatterns: [
       {
