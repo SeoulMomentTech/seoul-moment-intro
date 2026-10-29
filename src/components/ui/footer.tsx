@@ -61,20 +61,6 @@ export default function Footer() {
           <div className="flex gap-[10px]">
             <Link
               className="transition-opacity duration-300 hover:opacity-70"
-              href=""
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              <Image
-                alt="LINE"
-                className="max-md:h-[36px] max-md:w-[36px]"
-                height={50}
-                src="/line.svg"
-                width={50}
-              />
-            </Link>
-            <Link
-              className="transition-opacity duration-300 hover:opacity-70"
               href="https://www.instagram.com/seoul_moment_tw"
               rel="noopener noreferrer"
               target="_blank"
