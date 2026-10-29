@@ -90,7 +90,7 @@ export default function MobileHeroSlogan({ className }: Props) {
   return (
     <Section
       className={cn(
-        "section-one hidden flex-col items-center pt-[145px]",
+        "section-one hidden flex-col items-center overflow-x-clip pt-[145px]",
         "relative px-[20px] pb-[72px] max-sm:flex",
         className,
       )}

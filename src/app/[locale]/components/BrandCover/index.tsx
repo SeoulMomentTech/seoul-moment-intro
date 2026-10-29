@@ -28,7 +28,7 @@ export default function BrandCover({ className }: Props) {
         "section-2 relative mx-auto flex max-w-[1920px] flex-col justify-center",
         "h-auto min-h-dvh gap-[72px] overflow-hidden py-[100px]",
         "max-sm:min-h-0",
-        "max-md:gap-[48px] max-md:py-[80px]",
+        "max-md:gap-[48px] max-md:pt-[80px] max-md:pb-[40px]",
         className,
       )}
     >

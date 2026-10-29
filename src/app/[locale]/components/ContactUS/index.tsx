@@ -19,17 +19,13 @@ export default function ContactUS() {
 
   return (
     <Section
-      className={cn(
-        "mx-auto h-auto max-w-[1920px] max-2xl:h-auto",
-        "max-md:bg-black max-md:pt-[24px]",
-      )}
+      className={cn("mx-auto h-auto max-w-[1920px] max-2xl:h-auto")}
       id="contact-us"
     >
       <div
         className={cn(
           "flex justify-center pr-[180px] pl-[220px]",
-          "max-xl:px-[40px] max-md:rounded-t-[27px]",
-          "max-md:bg-white max-md:px-[20px]",
+          "max-xl:px-[40px] max-md:px-[20px]",
         )}
       >
         <div
